@@ -15,7 +15,7 @@ petLink.addEventListener("click", handleShowPets)
 let showPet = false
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("bye");
+  console.log("hi");
   getAllBooks()
   getAllBrooms()
   getAllWands()
