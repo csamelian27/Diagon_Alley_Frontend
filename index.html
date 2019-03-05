@@ -21,8 +21,8 @@
           <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
             <!--Header-->
             <div class="modal-header text-center pb-4">
-              <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>SIGN</strong> <a
-                  class="green-text font-weight-bold"><strong> UP</strong></a></h3>
+              <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>CREATE</strong> <a
+                  class="green-text font-weight-bold"><strong> ACCOUNT</strong></a></h3>
               <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -30,9 +30,10 @@
             <!--Body-->
             <div class="modal-body">
               <!--Body-->
+              <form id="user-name-form">
               <div class="md-form mb-5">
-                <label data-error="wrong" data-success="right" for="user-name" style="color:black">Your name: </label>
-                <input type="text" id="user-name" class="form-control validate white-text">
+                  <label data-error="wrong" data-success="right" for="user-name" style="color:black">Your name: </label>
+                  <input type="text" id="user-name" class="form-control validate white-text">
               </div><br />
 
               <div class="md-form pb-3">
@@ -40,20 +41,20 @@
 
                 <div>
                   <label for="bravery">Bravery</label>
-                  <input type="checkbox" id="bravery" name="bravery">
-                </div>
+                  <input type="checkbox" id="bravery" name="bravery"><br />
+                <!-- </div> -->
 
-                <div>
+                <!-- <div> -->
                   <label for="intellect">Intellect</label>
-                  <input type="checkbox" id="intellect" name="intellect">
-                </div>
+                  <input type="checkbox" id="intellect" name="intellect"><br />
+                <!-- </div> -->
 
-                <div>
+                <!-- <div> -->
                   <label for="cunning">Cunning</label>
-                  <input type="checkbox" id="cunning" name="cunning">
-                </div>
+                  <input type="checkbox" id="cunning" name="cunning"><br />
+                <!-- </div> -->
 
-                <div>
+                <!-- <div> -->
                   <label for="loyalty">Loyalty</label>
                   <input type="checkbox" id="loyalty" name="loyalty">
                 </div>
@@ -68,14 +69,15 @@
               </div>
 
               <!--Grid row-->
-              <div class="row d-flex align-items-center mb-4">
+              <div class="row d-flex align-items-center mb-4" id="sign-up-button">
 
                 <!--Grid column-->
                 <div class="text-center mb-3 col-md-12">
-                  <button type="button" class="btn btn-success btn-block btn-rounded z-depth-1">Sign up</button>
+                  <input type="submit" class="btn btn-success btn-block btn-rounded z-depth-1" value="Sign Up"/>
                 </div>
                 <!--Grid column-->
 
+              </form>
               </div>
               <!--Grid row-->
 

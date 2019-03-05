@@ -1,3 +1,4 @@
+// Global Event Listeners
 const bookLink = document.getElementById('book-store')
 bookLink.addEventListener("click", handleShowBooks)
 const bookList = document.getElementById('books')
@@ -22,6 +23,8 @@ const petList = document.getElementById('pets')
 petList.style.display = "none"
 let showPet = false
 
+
+// Begin Map Jquery
 var script = document.createElement('script');
 script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
 script.type = 'text/javascript';
@@ -80,6 +83,7 @@ function precarica( img ) {
 			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-blue.png');
 		});
 	});
+// End MAP Jquery
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("hi");
@@ -88,11 +92,68 @@ document.addEventListener("DOMContentLoaded", () => {
   getAllWands()
   getAllPets()
 
-  getUserHouse()
+  const userForm = document.getElementById('user-name-form')
+  userForm.addEventListener("submit", handleGetInfo)
 })
 
-function getUserHouse() {
+function postNewUser(userData) {
+  fetch('http://localhost:3000/api/v1/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+    .then(resp => resp.json())
+    .then(console.log)
+}
 
+// Create User
+function handleGetInfo(event) {
+  event.preventDefault()
+  const userName = event.target[0].value
+  const gryffindor = event.target[1].checked === true
+  const ravenclaw = event.target[2].checked === true
+  const slytherin = event.target[3].checked === true
+  const hufflepuff = event.target[4].checked === true
+
+  console.log(userName);
+  console.log(gryffindor)
+  console.log(ravenclaw)
+  console.log(slytherin)
+  console.log(hufflepuff)
+
+  let userHouse
+
+  switch(userHouse) {
+    case gryffindor:
+     // code block
+     break;
+     case ravenclaw:
+     // code block
+     break;
+    case slytherin:
+     // code block
+     break;
+     case hufflepuff:
+     // code block
+     break;
+  }
+
+  const userData = {
+    name: userName,
+    house: userHouse
+  }
+
+  // postNewUser(userData)
+}
+
+let currentUser = ""
+// Users
+function getOneUser(userId) {
+  fetch(`http://localhost:3000/api/v1/users/${userId}`)
+  .then(resp => resp.json())
+  .then(console.log)
 }
 
 // Toggle Menu Buttons to Show Different Stores
@@ -176,13 +237,6 @@ function handleShowPets(event) {
   }
 }
 
-let currentUser = ""
-// Users
-function getOneUser(userId) {
-  fetch(`http://localhost:3000/api/v1/users/${userId}`)
-    .then(resp => resp.json())
-    .then(console.log)
-}
 
 
 
@@ -311,13 +365,15 @@ function handleAddBroom(event) {
 //   // getAllWands()
 // })
 
+const wandDetail = document.getElementById('wand-detail')
+
 function getAllWands() {
   fetch("http://localhost:3000/api/v1/wands")
     .then(resp => resp.json())
     .then(wands => wands.forEach(wand => {
-      const wandList = document.getElementById('wand-list-group')
-      wandList.addEventListener("click", handleDisplayWand)
-      wandList.innerHTML += createWandLi(wand)
+      // const wandList = document.getElementById('wand-list-group')
+      // wandList.addEventListener("click", handleDisplayWand)
+      wandDetail.innerHTML += createWandCard(wand)
     }))
 }
 
@@ -325,10 +381,9 @@ function getOneWand(wandId) {
   fetch(`http://localhost:3000/api/v1/wands/${wandId}`)
     .then(resp => resp.json())
     .then(wand => {
-      const wandDetail = document.getElementById('wand-detail')
       wandDetail.innerHTML = ""
       wandDetail.innerHTML += createWandDetail(wand)
-      wandDetail.addEventListener("click", handleAddWand)
+      // wandDetail.addEventListener("click", handleAddWand)
     })
 }
 
@@ -336,10 +391,16 @@ function postAddWand(wandId) {
   // fetch()
 }
 
-function createWandLi(wand) {
+function createWandCard(wand) {
   return `
-    <li class="list-group-item" id="wand-li" data-id=${wand.id}>${wand.wood} + ${wand.core}</li>
+    <div class="card">
+    <h2>Wood Type: ${wand.wood}</h2>
+  	<img src=${wand.image_url} class="wand-avatar"/>
+  	<p> Core: ${wand.core}</p>
+  	<button data-id=${wand.id} class='wand-card'> See More Details </button>
+  	</div>
   `
+// <li class="list-group-item" id="wand-li" data-id=${wand.id}>${wand.wood} + ${wand.core}</li>
 }
 
 function createWandDetail(wand) {
@@ -350,20 +411,33 @@ function createWandDetail(wand) {
     <p>Previous Owner: ${wand.famous_owners}</p>
     <p>History: ${wand.notes}</p>
     <button data-id="${wand.id}" class="btn btn-info" id="add-wand">Buy Wand!</button>
+		<button class='return'> Keep Looking </button>
   `
 }
 
-function handleDisplayWand(event) {
-  const wandId = event.target.dataset.id
-  getOneWand(wandId)
-}
+wandDetail.addEventListener('click', (e) => {
+	if(e.target.className === 'wand-card') {
+		const wandId = event.target.dataset.id
+	  getOneWand(wandId)
+	}
+	else if(e.target.className === 'return') {
+		getAllWands()
+	}
+})
 
-function handleAddWand(event) {
-  if(event.target.id === "add-wand") {
-    const wandId = event.target.dataset.id
-    console.log(wandId);
-  }
-}
+// function handleDisplayWand(event) {
+//   const wandId = event.target.dataset.id
+//   getOneWand(wandId)
+// }
+//
+// function handleAddWand(event) {
+//   if(event.target.id === "add-wand") {
+//     const wandId = event.target.dataset.id
+//     console.log(wandId);
+//   }
+// }
+
+// END WAND FETCHES & FUNCTIONS
 
 
 
