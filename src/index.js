@@ -1,17 +1,25 @@
 const bookLink = document.getElementById('book-store')
 bookLink.addEventListener("click", handleShowBooks)
+const bookList = document.getElementById('books')
+bookList.style.display = "none"
 let showBook = false
 
 const broomLink = document.getElementById('broom-store')
 broomLink.addEventListener("click", handleShowBrooms)
+const broomList = document.getElementById('brooms')
+broomList.style.display = "none"
 let showBroom = false
 
 const wandLink = document.getElementById('wand-store')
 wandLink.addEventListener("click", handleShowWands)
+const wandList = document.getElementById('wands')
+wandList.style.display = "none"
 let showWand = false
 
 const petLink = document.getElementById('pet-store')
 petLink.addEventListener("click", handleShowPets)
+const petList = document.getElementById('pets')
+petList.style.display = "none"
 let showPet = false
 
 document.addEventListener("DOMContentLoaded", () => {
