@@ -22,6 +22,65 @@ const petList = document.getElementById('pets')
 petList.style.display = "none"
 let showPet = false
 
+var script = document.createElement('script');
+script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(script);
+
+function precarica( img ) {
+			$( img ).each( function () {
+				$( '<img/>' )[ 0 ].src = this;
+			});
+		}
+
+	precarica([
+      // hogwarts
+			'https://imgix.bustle.com/rehost/2016/9/13/70371c31-7d4c-4b46-839f-3225d06f8f99.jpg?w=970&h=546&fit=crop&crop=faces&auto=format&q=70',
+      // owl emporium
+    	'https://i.pinimg.com/originals/c6/d9/bf/c6d9bf1b6f614b8c97f8fc7f1fea4fff.jpg',
+      // map images
+			'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-yellow.png',
+			'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-red.png',
+			'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-pink.png',
+			'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-green.png',
+			'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-blue.png'
+		]);
+
+/*******jQuery for external title*********/
+
+	jQuery(document).ready(function () {
+		$('.title-blue').mouseout(function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-original.png');
+		}),
+		$('.title-blue').mouseover( function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-blue.png');
+		});
+		$('.title-red').mouseout(function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-original.png');
+		}),
+		$('.title-red').mouseover( function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-red.png');
+		});
+		$('.title-green').mouseout(function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-original.png');
+		}),
+		$('.title-green').mouseover( function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-green.png');
+		});
+		$('.title-yellow').mouseout(function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-original.png');
+		}),
+		$('.title-yellow').mouseover( function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-yellow.png');
+		});
+		$('.title-pink').mouseout(function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-original.png');
+		}),
+		$('.title-pink').mouseover( function(){
+			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-blue.png');
+		});
+	});
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("hi");
   getAllBooks()
