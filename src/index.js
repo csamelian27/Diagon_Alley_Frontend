@@ -98,6 +98,15 @@ function handleShowBooks(event) {
   const bookList = document.getElementById('books')
   if(showBook) {
     bookList.style.display = "block"
+
+    const broomList = document.getElementById('brooms')
+    broomList.style.display = "none"
+
+    const wandList = document.getElementById('wands')
+    wandList.style.display = "none"
+
+    const petList = document.getElementById('pets')
+    petList.style.display = "none"
   } else {
     bookList.style.display = "none"
   }
@@ -109,6 +118,15 @@ function handleShowBrooms(event) {
   const broomList = document.getElementById('brooms')
   if(showBroom) {
     broomList.style.display = "block"
+
+    const bookList = document.getElementById('books')
+    bookList.style.display = "none"
+
+    const wandList = document.getElementById('wands')
+    wandList.style.display = "none"
+
+    const petList = document.getElementById('pets')
+    petList.style.display = "none"
   } else {
     broomList.style.display = "none"
   }
@@ -120,6 +138,15 @@ function handleShowWands(event) {
   const wandList = document.getElementById('wands')
   if(showWand) {
     wandList.style.display = "block"
+
+    const broomList = document.getElementById('brooms')
+    broomList.style.display = "none"
+
+    const bookList = document.getElementById('books')
+    bookList.style.display = "none"
+
+    const petList = document.getElementById('pets')
+    petList.style.display = "none"
   } else {
     wandList.style.display = "none"
   }
@@ -131,6 +158,15 @@ function handleShowPets(event) {
   const petList = document.getElementById('pets')
   if(showPet) {
     petList.style.display = "block"
+
+    const broomList = document.getElementById('brooms')
+    broomList.style.display = "none"
+
+    const wandList = document.getElementById('wands')
+    wandList.style.display = "none"
+
+    const bookList = document.getElementById('books')
+    bookList.style.display = "none"
   } else {
     petList.style.display = "none"
   }
