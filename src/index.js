@@ -1,3 +1,4 @@
+// Global Event Listeners
 const bookLink = document.getElementById('book-store')
 bookLink.addEventListener("click", handleShowBooks)
 const bookList = document.getElementById('books')
@@ -22,6 +23,8 @@ const petList = document.getElementById('pets')
 petList.style.display = "none"
 let showPet = false
 
+
+// Begin Map Jquery
 var script = document.createElement('script');
 script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
 script.type = 'text/javascript';
@@ -80,6 +83,7 @@ function precarica( img ) {
 			$("#map").attr('src', 'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-blue.png');
 		});
 	});
+// End MAP Jquery
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("hi");
@@ -87,9 +91,70 @@ document.addEventListener("DOMContentLoaded", () => {
   getAllBrooms()
   getAllWands()
   getAllPets()
+
+  const userForm = document.getElementById('user-name-form')
+  userForm.addEventListener("submit", handleGetInfo)
 })
 
+function postNewUser(userData) {
+  fetch('http://localhost:3000/api/v1/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+    .then(resp => resp.json())
+    .then(console.log)
+}
 
+// Create User
+function handleGetInfo(event) {
+  event.preventDefault()
+  const userName = event.target[0].value
+  const gryffindor = event.target[1].checked === true
+  const ravenclaw = event.target[2].checked === true
+  const slytherin = event.target[3].checked === true
+  const hufflepuff = event.target[4].checked === true
+
+  console.log(userName);
+  console.log(gryffindor)
+  console.log(ravenclaw)
+  console.log(slytherin)
+  console.log(hufflepuff)
+
+  let userHouse
+
+  switch(userHouse) {
+    case gryffindor:
+     // code block
+     break;
+     case ravenclaw:
+     // code block
+     break;
+    case slytherin:
+     // code block
+     break;
+     case hufflepuff:
+     // code block
+     break;
+  }
+
+  const userData = {
+    name: userName,
+    house: userHouse
+  }
+
+  // postNewUser(userData)
+}
+
+let currentUser = ""
+// Users
+function getOneUser(userId) {
+  fetch(`http://localhost:3000/api/v1/users/${userId}`)
+  .then(resp => resp.json())
+  .then(console.log)
+}
 
 // Toggle Menu Buttons to Show Different Stores
 function handleShowBooks(event) {
@@ -98,6 +163,15 @@ function handleShowBooks(event) {
   const bookList = document.getElementById('books')
   if(showBook) {
     bookList.style.display = "block"
+
+    const broomList = document.getElementById('brooms')
+    broomList.style.display = "none"
+
+    const wandList = document.getElementById('wands')
+    wandList.style.display = "none"
+
+    const petList = document.getElementById('pets')
+    petList.style.display = "none"
   } else {
     bookList.style.display = "none"
   }
@@ -109,6 +183,15 @@ function handleShowBrooms(event) {
   const broomList = document.getElementById('brooms')
   if(showBroom) {
     broomList.style.display = "block"
+
+    const bookList = document.getElementById('books')
+    bookList.style.display = "none"
+
+    const wandList = document.getElementById('wands')
+    wandList.style.display = "none"
+
+    const petList = document.getElementById('pets')
+    petList.style.display = "none"
   } else {
     broomList.style.display = "none"
   }
@@ -120,6 +203,15 @@ function handleShowWands(event) {
   const wandList = document.getElementById('wands')
   if(showWand) {
     wandList.style.display = "block"
+
+    const broomList = document.getElementById('brooms')
+    broomList.style.display = "none"
+
+    const bookList = document.getElementById('books')
+    bookList.style.display = "none"
+
+    const petList = document.getElementById('pets')
+    petList.style.display = "none"
   } else {
     wandList.style.display = "none"
   }
@@ -131,6 +223,15 @@ function handleShowPets(event) {
   const petList = document.getElementById('pets')
   if(showPet) {
     petList.style.display = "block"
+
+    const broomList = document.getElementById('brooms')
+    broomList.style.display = "none"
+
+    const wandList = document.getElementById('wands')
+    wandList.style.display = "none"
+
+    const bookList = document.getElementById('books')
+    bookList.style.display = "none"
   } else {
     petList.style.display = "none"
   }
@@ -196,10 +297,10 @@ function handleAddBook(event) {
 
 
 // Broom Fetches & Functions
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("hi");
-  getAllBrooms()
-})
+// document.addEventListener("DOMContentLoaded", () => {
+//   console.log("hi");
+//   // getAllBrooms()
+// })
 
 function getAllBrooms() {
   fetch("http://localhost:3000/api/v1/brooms")
@@ -259,10 +360,10 @@ function handleAddBroom(event) {
 
 
 // Wand Fetches & Functions
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("hi");
-  getAllWands()
-})
+// document.addEventListener("DOMContentLoaded", () => {
+//   console.log("hi");
+//   // getAllWands()
+// })
 
 const wandDetail = document.getElementById('wand-detail')
 
@@ -291,12 +392,13 @@ function postAddWand(wandId) {
 }
 
 function createWandCard(wand) {
-  return `	<div class="card">
-															 <h2>Wood Type: ${wand.wood}</h2>
-															 <img src=${wand.image_url} class="wand-avatar"/>
-															 <p> Core:${wand.core}</p>
-															 <button data-id=${wand.id} class='wand-card'> See More Details </button>
-													 </div>
+  return `
+    <div class="card">
+    <h2>Wood Type: ${wand.wood}</h2>
+  	<img src=${wand.image_url} class="wand-avatar"/>
+  	<p> Core: ${wand.core}</p>
+  	<button data-id=${wand.id} class='wand-card'> See More Details </button>
+  	</div>
   `
 // <li class="list-group-item" id="wand-li" data-id=${wand.id}>${wand.wood} + ${wand.core}</li>
 }
@@ -335,66 +437,79 @@ wandDetail.addEventListener('click', (e) => {
 //   }
 // }
 
+// END WAND FETCHES & FUNCTIONS
+
 
 
 
 // Pet Fetches & Functions
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("hi");
-  getAllPets()
-})
+// document.addEventListener("DOMContentLoaded", () => {
+//   console.log("hi");
+//   // getAllPets()
+// })
 
 function getAllPets() {
   fetch("http://localhost:3000/api/v1/pets")
     .then(resp => resp.json())
     .then(pets => pets.forEach(pet => {
       const petList = document.getElementById('pet-list-group')
-      petList.addEventListener("click", handleDisplayPet)
-      petList.innerHTML += createPetLi(pet)
+      petList.addEventListener("click", handleAddPet)
+      petList.innerHTML += createPetCard(pet)
     }))
 }
 
-function getOnePet(petId) {
-  fetch(`http://localhost:3000/api/v1/pets/${petId}`)
+// function getOnePet(petId) {
+//   fetch(`http://localhost:3000/api/v1/pets/${petId}`)
+//     .then(resp => resp.json())
+//     .then(pet => {
+//       const petDetail = document.querySelector('.pet-detail')
+//       petDetail.innerHTML = ""
+//       petDetail.innerHTML += createPetDetail(pet)
+//       petDetail.addEventListener("click", handleAddPet)
+//     })
+// }
+
+function postAddPet(userId, petId) {
+  fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({pet_id: petId})
+  })
     .then(resp => resp.json())
-    .then(pet => {
-      const petDetail = document.getElementById('pet-detail')
-      petDetail.innerHTML = ""
-      petDetail.innerHTML += createPetDetail(pet)
-      petDetail.addEventListener("click", handleAddPet)
-    })
+    .then(console.log)
 }
 
-function postAddPet(petId) {
-  // fetch()
-}
-
-function createPetLi(pet) {
+function createPetCard(pet) {
   return `
-    <li class="list-group-item" id="pet-li" data-id=${pet.id}>${pet.name}</li>
+    <div class="card-body col-md-3 ml-auto">
+      <h2 class="card-title">${pet.name}</h2>
+      <img src="${pet.image_url}"/>
+      <p>Breed: ${pet.breed} ${pet.animal}</p>
+      <p>Gender: ${pet.gender}</p>
+      <p>Age: ${pet.age}</p>
+      <p>Previous Owner: ${pet.former_owner}</p>
+      <button data-id="${pet.id}" data-user-id="" class="btn btn-dark" id="add-pet">Buy Pet!</button><br><br>
+    </div>
   `
 }
 
-function createPetDetail(pet) {
-  return `
-    <h2>${pet.name}</h2>
-    <img src="${pet.image_url}"/>
-    <p>Breed: ${pet.breed} ${pet.animal}</p>
-    <p>Gender: ${pet.gender}</p>
-    <p>Age: ${pet.age}</p>
-    <p>Previous Owner: ${pet.former_owner}</p>
-    <button data-id="${pet.id}" class="btn btn-info" id="add-pet">Buy Pet!</button>
-  `
-}
-
-function handleDisplayPet(event) {
-  const petId = event.target.dataset.id
-  getOnePet(petId)
-}
+// function createPetDetail(pet) {
+//   return `
+//     <h2>${pet.name}</h2>
+//     <img src="${pet.image_url}"/>
+//     <p>Breed: ${pet.breed} ${pet.animal}</p>
+//     <p>Gender: ${pet.gender}</p>
+//     <p>Age: ${pet.age}</p>
+//     <p>Previous Owner: ${pet.former_owner}</p>
+//     <button data-id="${pet.id}" class="btn btn-info" id="add-pet">Buy Pet!</button>
+//   `
+// }
 
 function handleAddPet(event) {
-  if(event.target.id === "add-pet") {
+  if(event.target.tagName === 'BUTTON') {
     const petId = event.target.dataset.id
-    console.log(petId);
+    postAddPet(petId)
   }
 }
