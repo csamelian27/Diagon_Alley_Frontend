@@ -12,6 +12,99 @@
   </head>
   <body>
 
+    <!-- Modal -->
+    <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg');">
+          <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+            <!--Header-->
+            <div class="modal-header text-center pb-4">
+              <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>SIGN</strong> <a
+                  class="green-text font-weight-bold"><strong> UP</strong></a></h3>
+              <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+              <!--Body-->
+              <div class="md-form mb-5">
+                <label data-error="wrong" data-success="right" for="user-name" style="color:black">Your name: </label>
+                <input type="text" id="user-name" class="form-control validate white-text">
+              </div><br />
+
+              <div class="md-form pb-3">
+                <p><strong>Choose your most valued characteristic:</strong></p>
+
+                <div>
+                  <label for="bravery">Bravery</label>
+                  <input type="checkbox" id="bravery" name="bravery">
+                </div>
+
+                <div>
+                  <label for="intellect">Intellect</label>
+                  <input type="checkbox" id="intellect" name="intellect">
+                </div>
+
+                <div>
+                  <label for="cunning">Cunning</label>
+                  <input type="checkbox" id="cunning" name="cunning">
+                </div>
+
+                <div>
+                  <label for="loyalty">Loyalty</label>
+                  <input type="checkbox" id="loyalty" name="loyalty">
+                </div>
+
+                <!-- <input type="checkbox" id="myCheck" class="form-control validate white-text" onclick="myFunction()">
+                <label data-error="wrong" data-success="right" for="house-question">What is your most valued characteristic?</label>
+                <div class="form-group mt-4">
+                  <input class="form-check-input" type="checkbox" id="checkbox624">
+                  <label for="checkbox624" class="white-text form-check-label">Accept the<a href="#" class="green-text font-weight-bold">
+                      Terms and Conditions</a></label>
+                </div> -->
+              </div>
+
+              <!--Grid row-->
+              <div class="row d-flex align-items-center mb-4">
+
+                <!--Grid column-->
+                <div class="text-center mb-3 col-md-12">
+                  <button type="button" class="btn btn-success btn-block btn-rounded z-depth-1">Sign up</button>
+                </div>
+                <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+                <!-- <div class="col-md-12">
+                  <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="#" class="green-text ml-1 font-weight-bold">
+                      Log in</a></p>
+                </div> -->
+                <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+            </div>
+          </div>
+        </div>
+        <!--/.Content-->
+      </div>
+    </div>
+    <!-- Modal -->
+
+
+    <div class="text-center">
+      <a href="" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#darkModalForm">Create Account to Travel to Diagon Alley</a>
+    </div>
+
   <!-- <h1>Welcome to Diagon Alley!</h1> -->
   <!-- <a href="src/books_index.js" id="book-index-a" class="btn btn-info">Visit Book Store!</a>
   <a href="src/brooms_index.js" id="broom-index-a" class="btn btn-info">Visit Broom Store!</a>
