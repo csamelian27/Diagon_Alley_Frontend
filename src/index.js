@@ -264,13 +264,15 @@ document.addEventListener("DOMContentLoaded", () => {
   getAllWands()
 })
 
+const wandDetail = document.getElementById('wand-detail')
+
 function getAllWands() {
   fetch("http://localhost:3000/api/v1/wands")
     .then(resp => resp.json())
     .then(wands => wands.forEach(wand => {
-      const wandList = document.getElementById('wand-list-group')
-      wandList.addEventListener("click", handleDisplayWand)
-      wandList.innerHTML += createWandLi(wand)
+      // const wandList = document.getElementById('wand-list-group')
+      // wandList.addEventListener("click", handleDisplayWand)
+      wandDetail.innerHTML += createWandCard(wand)
     }))
 }
 
@@ -278,10 +280,9 @@ function getOneWand(wandId) {
   fetch(`http://localhost:3000/api/v1/wands/${wandId}`)
     .then(resp => resp.json())
     .then(wand => {
-      const wandDetail = document.getElementById('wand-detail')
       wandDetail.innerHTML = ""
       wandDetail.innerHTML += createWandDetail(wand)
-      wandDetail.addEventListener("click", handleAddWand)
+      // wandDetail.addEventListener("click", handleAddWand)
     })
 }
 
@@ -289,10 +290,15 @@ function postAddWand(wandId) {
   // fetch()
 }
 
-function createWandLi(wand) {
-  return `
-    <li class="list-group-item" id="wand-li" data-id=${wand.id}>${wand.wood} + ${wand.core}</li>
+function createWandCard(wand) {
+  return `	<div class="card">
+															 <h2>Wood Type: ${wand.wood}</h2>
+															 <img src=${wand.image_url} class="wand-avatar"/>
+															 <p> Core:${wand.core}</p>
+															 <button data-id=${wand.id} class='wand-card'> See More Details </button>
+													 </div>
   `
+// <li class="list-group-item" id="wand-li" data-id=${wand.id}>${wand.wood} + ${wand.core}</li>
 }
 
 function createWandDetail(wand) {
@@ -303,20 +309,31 @@ function createWandDetail(wand) {
     <p>Previous Owner: ${wand.famous_owners}</p>
     <p>History: ${wand.notes}</p>
     <button data-id="${wand.id}" class="btn btn-info" id="add-wand">Buy Wand!</button>
+		<button class='return'> Keep Looking </button>
   `
 }
 
-function handleDisplayWand(event) {
-  const wandId = event.target.dataset.id
-  getOneWand(wandId)
-}
+wandDetail.addEventListener('click', (e) => {
+	if(e.target.className === 'wand-card') {
+		const wandId = event.target.dataset.id
+	  getOneWand(wandId)
+	}
+	else if(e.target.className === 'return') {
+		getAllWands()
+	}
+})
 
-function handleAddWand(event) {
-  if(event.target.id === "add-wand") {
-    const wandId = event.target.dataset.id
-    console.log(wandId);
-  }
-}
+// function handleDisplayWand(event) {
+//   const wandId = event.target.dataset.id
+//   getOneWand(wandId)
+// }
+//
+// function handleAddWand(event) {
+//   if(event.target.id === "add-wand") {
+//     const wandId = event.target.dataset.id
+//     console.log(wandId);
+//   }
+// }
 
 
 
