@@ -28,6 +28,7 @@ userShow.addEventListener("click", handleShowUser)
 const userProfile = document.getElementById('user-profile-2')
 userProfile.style.display = "none"
 let showUser = false
+// End Global vars
 
 
 // Begin Map Jquery
@@ -91,6 +92,7 @@ function precarica( img ) {
 	});
 // End MAP Jquery
 
+// Begin index.js stuff
 document.addEventListener("DOMContentLoaded", () => {
   console.log("hi");
   getAllBooks()
@@ -102,85 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
   userForm.addEventListener("submit", handleGetInfo)
 })
 
-
-// Users
-let currentUser = ""
-function postNewUser(userData) {
-  fetch('http://localhost:3000/api/v1/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(userData)
-  })
-    .then(resp => resp.json())
-    .then(user => {
-      currentUser = user
-      console.log(currentUser);
-    })
-}
-
-// function getOneUser(userId) {
-//   fetch(`http://localhost:3000/api/v1/users/${userId}`)
-//   .then(resp => resp.json())
-//   .then(console.log)
-// }
-
-// Create User
-function handleGetInfo(event) {
-  event.preventDefault()
-  const userName = event.target[0].value
-  const gryffindor = event.target[1].checked === true
-  const ravenclaw = event.target[2].checked === true
-  const slytherin = event.target[3].checked === true
-  const hufflepuff = event.target[4].checked === true
-
-  let userHouse
-
-  if(gryffindor) {
-    userHouse = "Gryffindor"
-  } else if (ravenclaw) {
-    userHouse = "Ravenclaw"
-  } else if (slytherin) {
-    userHouse = "Slytherin"
-  } else if (hufflepuff) {
-    userHouse = "hufflepuff"
-  } else {
-    return 'Please select a characteristic!'
-  }
-
-  const userData = {
-    name: userName,
-    house: userHouse
-  }
-
-  postNewUser(userData)
-}
-
-// Toggle Menu Buttons to Show Different Stores
-function handleShowUser(event) {
-  console.log(event.target);
-  showUser = !showUser
-  const userProfile = document.getElementById('user-profile-2')
-  if(showUser) {
-    userProfile.style.display = "block"
-
-    const broomList = document.getElementById('brooms')
-    broomList.style.display = "none"
-
-    const bookList = document.getElementById('books')
-    bookList.style.display = "none"
-
-    const wandList = document.getElementById('wands')
-    wandList.style.display = "none"
-
-    const petList = document.getElementById('pets')
-    petList.style.display = "none"
-  } else {
-    bookList.style.display = "none"
-  }
-}
-
+// Begin Toggle Menu Buttons to Show/Hide Different Stores
 function handleShowBooks(event) {
   console.log(event.target);
   showBook = !showBook
@@ -273,8 +197,84 @@ function handleShowPets(event) {
   }
 }
 
+function handleShowUser(event) {
+  console.log(event.target);
+  showUser = !showUser
+  const userProfile = document.getElementById('user-profile-2')
+  if(showUser) {
+    userProfile.style.display = "block"
+
+    const broomList = document.getElementById('brooms')
+    broomList.style.display = "none"
+
+    const bookList = document.getElementById('books')
+    bookList.style.display = "none"
+
+    const wandList = document.getElementById('wands')
+    wandList.style.display = "none"
+
+    const petList = document.getElementById('pets')
+    petList.style.display = "none"
+  } else {
+    bookList.style.display = "none"
+  }
+}
+// End Toggle Menu Buttons to Show/Hide Different Stores
 
 
+// Begin Users Fetches & Functions
+let currentUser = ""
+function getOneUser() {
+  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`)
+  .then(resp => resp.json())
+  .then(console.log)
+}
+
+function postNewUser(userData) {
+  fetch('http://localhost:3000/api/v1/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+  .then(resp => resp.json())
+  .then(user => {
+    currentUser = user
+    console.log(currentUser);
+  })
+}
+
+function handleGetInfo(event) {
+  event.preventDefault()
+  const userName = event.target[0].value
+  const gryffindor = event.target[1].checked === true
+  const ravenclaw = event.target[2].checked === true
+  const slytherin = event.target[3].checked === true
+  const hufflepuff = event.target[4].checked === true
+
+  let userHouse
+
+  if(gryffindor) {
+    userHouse = "Gryffindor"
+  } else if (ravenclaw) {
+    userHouse = "Ravenclaw"
+  } else if (slytherin) {
+    userHouse = "Slytherin"
+  } else if (hufflepuff) {
+    userHouse = "hufflepuff"
+  } else {
+    return 'Please select a characteristic!'
+  }
+
+  const userData = {
+    name: userName,
+    house: userHouse
+  }
+
+  postNewUser(userData)
+}
+// End User Fetches & Functions
 
 
 // Book Fetches & Functions
