@@ -8,16 +8,37 @@
   <body>
 
   <h1>Welcome to Diagon Alley!</h1>
-  <a href="src/books_index.js" id="book-index-a" class="btn btn-info">Visit Book Store!</a>
+  <!-- <a href="src/books_index.js" id="book-index-a" class="btn btn-info">Visit Book Store!</a>
   <a href="src/brooms_index.js" id="broom-index-a" class="btn btn-info">Visit Broom Store!</a>
   <a href="src/wands_index.js" id="wand-index-a" class="btn btn-info">Visit Wand Store!</a>
-  <a href="src/pets_index.js" id="pet-index-a" class="btn btn-info">Visit Pet Store!</a>
+  <a href="src/pets_index.js" id="pet-index-a" class="btn btn-info">Visit Pet Store!</a> -->
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Diagon Alley</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <!-- <li class="active"><a href="#">Diagon Alley</a></li> -->
+        <li><a id="book-store" href="#">Flourish & Blotts</a></li>
+        <li><a id="broom-store" href="#">Quality Quidditch Supplies</a></li>
+        <li><a id="wand-store" href="#">Ollivander's Wands</a></li>
+        <li><a id="pet-store" href="#">Eeylops Owl Emporium</a></li>
+      </ul>
+      <!-- <form class="navbar-form navbar-left" action="/action_page.php">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+    </div>
+  </nav>
 
   <!-- BOOK INDEX & SHOW -->
   <!-- <h1>Welcome to The Book Store!</h1> -->
-    <!-- <div class='row'>
+    <div class='row' id="books">
       <div class='col-md-4'>
-        <ul class="list-group book" id="list-group">
+        <ul class="list-group" id="book-list-group">
 
         </ul>
       </div>
@@ -27,64 +48,64 @@
 
         </div>
       </div>
-    </div> -->
+    </div>
   <!-- END BOOK -->
 
+  <!-- BROOM INDEX & SHOW -->
+  <!-- <h1>Welcome to The Broom Store!</h1> -->
+  <div class='row' id="brooms">
+    <div class='col-md-4'>
+      <ul class="list-group" id="broom-list-group">
+
+      </ul>
+    </div>
+
+    <div class='col-md-8'>
+      <div id="broom-detail">
+
+      </div>
+    </div>
+  </div>
+  <!-- END BROOM -->
+
   <!-- WAND INDEX & SHOW -->
-  <!-- <h1>Welcome to The Wand Store!</h1>
-    <div class='row'>
+  <!-- <h1>Welcome to The Wand Store!</h1> -->
+    <div class='row' id="wands">
       <div class='col-md-4'>
-        <ul class="list-group book" id="list-group">
+        <ul class="list-group" id="wand-list-group">
 
         </ul>
       </div>
 
       <div class='col-md-8'>
-        <div id="book-detail">
+        <div id="wand-detail">
 
         </div>
       </div>
-    </div> -->
+    </div>
   <!-- END WAND -->
 
   <!-- PET INDEX & SHOW -->
-  <!-- <h1>Welcome to The Pet Store!</h1>
-    <div class='row'>
+  <!-- <h1>Welcome to The Pet Store!</h1> -->
+    <div class='row' id="pets">
       <div class='col-md-4'>
-        <ul class="list-group book" id="list-group">
+        <ul class="list-group" id="pet-list-group">
 
         </ul>
       </div>
 
       <div class='col-md-8'>
-        <div id="book-detail">
+        <div id="pet-detail">
 
         </div>
       </div>
-    </div> -->
+    </div>
   <!-- END PET -->
 
-  <!-- BROOM INDEX & SHOW -->
-  <!-- <h1>Welcome to The Broom Store!</h1>
-    <div class='row'>
-      <div class='col-md-4'>
-        <ul class="list-group broom" id="list-group">
-
-        </ul>
-      </div>
-
-      <div class='col-md-8'>
-        <div id="broom-detail">
-
-        </div>
-      </div>
-    </div> -->
-  <!-- END BROOM -->
-
     <script src="src/index.js"></script>
-    <script src="src/books_index.js"></script>
-    <script src="src/wands_index.js"></script>
+    <!-- <script src="src/books_index.js"></script> -->
+    <!-- <script src="src/wands_index.js"></script>
     <script src="src/pets_index.js"></script>
-    <script src="src/brooms_index.js"></script>
+    <script src="src/brooms_index.js"></script> -->
   </body>
 </html>

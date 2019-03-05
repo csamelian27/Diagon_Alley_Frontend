@@ -1,56 +1,58 @@
 // document.addEventListener("DOMContentLoaded", () => {
 //   console.log("hi");
-//
+//   getAllWands()
 // })
 //
-// function getAllBooks() {
-//   fetch("http://localhost:3000/api/v1/books")
+// function getAllWands() {
+//   fetch("http://localhost:3000/api/v1/wands")
 //     .then(resp => resp.json())
-//     .then(books => books.forEach(book => {
-//       const bookList = document.getElementById('list-group')
-//       bookList.addEventListener("click", handleDisplayBook)
-//       bookList.innerHTML += createBookLi(book)
+//     .then(wands => wands.forEach(wand => {
+//       const wandList = document.getElementById('list-group')
+//       wandList.addEventListener("click", handleDisplayWand)
+//       wandList.innerHTML += createWandLi(wand)
 //     }))
 // }
 //
-// function getOneBook(bookId) {
-//   fetch(`http://localhost:3000/api/v1/books/${bookId}`)
+// function getOneWand(wandId) {
+//   fetch(`http://localhost:3000/api/v1/wands/${wandId}`)
 //     .then(resp => resp.json())
-//     .then(book => {
-//       const bookDetail = document.getElementById('book-detail')
-//       bookDetail.innerHTML = ""
-//       bookDetail.innerHTML += createBookDetail(book)
-//       bookDetail.addEventListener("click", handleAddBook)
+//     .then(wand => {
+//       const wandDetail = document.getElementById('wand-detail')
+//       wandDetail.innerHTML = ""
+//       wandDetail.innerHTML += createWandDetail(wand)
+//       wandDetail.addEventListener("click", handleAddWand)
 //     })
 // }
 //
-// function postAddBook(bookId) {
+// function postAddWand(wandId) {
 //   // fetch()
 // }
 //
-// function createBookLi(book) {
+// function createWandLi(wand) {
 //   return `
-//     <li class="list-group-item" id="book-li" data-id=${book.id}>${book.title}</li>
+//     <li class="list-group-item" id="wand-li" data-id=${wand.id}>${wand.wood} + ${wand.core}</li>
 //   `
 // }
 //
-// function createBookDetail(book) {
+// function createWandDetail(wand) {
 //   return `
-//     <h2>${book.title}</h2>
-//     <p>Written by: ${book.author}</p>
-//     <p>Subject: ${book.subject}</p>
-//     <button data-id="${book.id}" class="btn btn-info" id="add-book">Buy Book!</button>
+//     <h2>${wand.wood} + ${wand.core}</h2>
+//     <img src="${wand.image_url}"/>
+//     <p>Length: ${wand.length}</p>
+//     <p>Previous Owner: ${wand.famous_owners}</p>
+//     <p>History: ${wand.notes}</p>
+//     <button data-id="${wand.id}" class="btn btn-info" id="add-wand">Buy Wand!</button>
 //   `
 // }
 //
-// function handleDisplayBook(event) {
-//   const bookId = event.target.dataset.id
-//   getOneBook(bookId)
+// function handleDisplayWand(event) {
+//   const wandId = event.target.dataset.id
+//   getOneWand(wandId)
 // }
 //
-// function handleAddBook(event) {
-//   if(event.target.id === "add-book") {
-//     const bookId = event.target.dataset.id
-//     console.log(bookId);
+// function handleAddWand(event) {
+//   if(event.target.id === "add-wand") {
+//     const wandId = event.target.dataset.id
+//     console.log(wandId);
 //   }
 // }

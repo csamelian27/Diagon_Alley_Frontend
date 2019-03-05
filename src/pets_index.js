@@ -1,56 +1,59 @@
 // document.addEventListener("DOMContentLoaded", () => {
 //   console.log("hi");
-//
+//   getAllPets()
 // })
 //
-// function getAllBooks() {
-//   fetch("http://localhost:3000/api/v1/books")
+// function getAllPets() {
+//   fetch("http://localhost:3000/api/v1/pets")
 //     .then(resp => resp.json())
-//     .then(books => books.forEach(book => {
-//       const bookList = document.getElementById('list-group')
-//       bookList.addEventListener("click", handleDisplayBook)
-//       bookList.innerHTML += createBookLi(book)
+//     .then(pets => pets.forEach(pet => {
+//       const petList = document.getElementById('list-group')
+//       petList.addEventListener("click", handleDisplayPet)
+//       petList.innerHTML += createPetLi(pet)
 //     }))
 // }
 //
-// function getOneBook(bookId) {
-//   fetch(`http://localhost:3000/api/v1/books/${bookId}`)
+// function getOnePet(petId) {
+//   fetch(`http://localhost:3000/api/v1/pets/${petId}`)
 //     .then(resp => resp.json())
-//     .then(book => {
-//       const bookDetail = document.getElementById('book-detail')
-//       bookDetail.innerHTML = ""
-//       bookDetail.innerHTML += createBookDetail(book)
-//       bookDetail.addEventListener("click", handleAddBook)
+//     .then(pet => {
+//       const petDetail = document.getElementById('pet-detail')
+//       petDetail.innerHTML = ""
+//       petDetail.innerHTML += createPetDetail(pet)
+//       petDetail.addEventListener("click", handleAddPet)
 //     })
 // }
 //
-// function postAddBook(bookId) {
+// function postAddPet(petId) {
 //   // fetch()
 // }
 //
-// function createBookLi(book) {
+// function createPetLi(pet) {
 //   return `
-//     <li class="list-group-item" id="book-li" data-id=${book.id}>${book.title}</li>
+//     <li class="list-group-item" id="pet-li" data-id=${pet.id}>${pet.name}</li>
 //   `
 // }
 //
-// function createBookDetail(book) {
+// function createPetDetail(pet) {
 //   return `
-//     <h2>${book.title}</h2>
-//     <p>Written by: ${book.author}</p>
-//     <p>Subject: ${book.subject}</p>
-//     <button data-id="${book.id}" class="btn btn-info" id="add-book">Buy Book!</button>
+//     <h2>${pet.name}</h2>
+//     <img src="${pet.image_url}"/>
+//     <p>Breed: ${pet.breed} ${pet.animal}</p>
+//     <p>Gender: ${pet.gender}</p>
+//     <p>Age: ${pet.age}</p>
+//     <p>Previous Owner: ${pet.former_owner}</p>
+//     <button data-id="${pet.id}" class="btn btn-info" id="add-pet">Buy Pet!</button>
 //   `
 // }
 //
-// function handleDisplayBook(event) {
-//   const bookId = event.target.dataset.id
-//   getOneBook(bookId)
+// function handleDisplayPet(event) {
+//   const petId = event.target.dataset.id
+//   getOnePet(petId)
 // }
 //
-// function handleAddBook(event) {
-//   if(event.target.id === "add-book") {
-//     const bookId = event.target.dataset.id
-//     console.log(bookId);
+// function handleAddPet(event) {
+//   if(event.target.id === "add-pet") {
+//     const petId = event.target.dataset.id
+//     console.log(petId);
 //   }
 // }
