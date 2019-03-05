@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("hi");
- getAllBooks()
-})
+// document.addEventListener("DOMContentLoaded", () => {
+//   console.log("hi");
+//  getAllBooks()
+// })
 
 // function getAllBooks() {
 //   fetch("http://localhost:3000/api/v1/books")
