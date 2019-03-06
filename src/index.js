@@ -396,6 +396,7 @@ function handleDisplayBroom(event) {
 function handleAddBroom(event) {
   if(event.target.id === "add-broom") {
     const broomId = event.target.dataset.id
+		event.target.innerText = 'Sold Out!'
     postAddBroom(broomId)
   }
 }
@@ -441,6 +442,7 @@ function postAddWand(wandId) {
   })
     .then(resp => resp.json())
     .then(console.log)
+
 }
 
 function createWandCard(wand) {
@@ -485,8 +487,11 @@ wandDetail.addEventListener('click', (e) => {
 function handleAddWand(event) {
   if(event.target.id === "add-wand") {
     const wandId = event.target.dataset.id
+		bought = true
+		event.target.innerText = 'Sold'
     postAddWand(wandId)
   }
+
 }
 
 // END WAND FETCHES & FUNCTIONS
@@ -562,6 +567,7 @@ function createPetCard(pet) {
 function handleAddPet(event) {
   if(event.target.tagName === 'BUTTON') {
     const petId = event.target.dataset.id
+		event.target.innerText = 'Sold!'
     postAddPet(petId)
   }
 }
