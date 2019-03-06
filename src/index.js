@@ -23,6 +23,13 @@ const petList = document.getElementById('pets')
 petList.style.display = "none"
 let showPet = false
 
+const userShow = document.getElementById('user-profile')
+userShow.addEventListener("click", handleShowUser)
+const userProfile = document.getElementById('user-profile-2')
+userProfile.style.display = "none"
+let showUser = false
+// End Global vars
+
 
 // Begin Map Jquery
 var script = document.createElement('script');
@@ -85,6 +92,7 @@ function precarica( img ) {
 	});
 // End MAP Jquery
 
+// Begin index.js stuff
 document.addEventListener("DOMContentLoaded", () => {
   console.log("hi");
   getAllBooks()
@@ -96,67 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
   userForm.addEventListener("submit", handleGetInfo)
 })
 
-function postNewUser(userData) {
-  fetch('http://localhost:3000/api/v1/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(userData)
-  })
-    .then(resp => resp.json())
-    .then(console.log)
-}
-
-// Create User
-function handleGetInfo(event) {
-  event.preventDefault()
-  const userName = event.target[0].value
-  const gryffindor = event.target[1].checked === true
-  const ravenclaw = event.target[2].checked === true
-  const slytherin = event.target[3].checked === true
-  const hufflepuff = event.target[4].checked === true
-
-  console.log(userName);
-  console.log(gryffindor)
-  console.log(ravenclaw)
-  console.log(slytherin)
-  console.log(hufflepuff)
-
-  let userHouse
-
-  switch(userHouse) {
-    case gryffindor:
-     // code block
-     break;
-     case ravenclaw:
-     // code block
-     break;
-    case slytherin:
-     // code block
-     break;
-     case hufflepuff:
-     // code block
-     break;
-  }
-
-  const userData = {
-    name: userName,
-    house: userHouse
-  }
-
-  // postNewUser(userData)
-}
-
-let currentUser = ""
-// Users
-function getOneUser(userId) {
-  fetch(`http://localhost:3000/api/v1/users/${userId}`)
-  .then(resp => resp.json())
-  .then(console.log)
-}
-
-// Toggle Menu Buttons to Show Different Stores
+// Begin Toggle Menu Buttons to Show/Hide Different Stores
 function handleShowBooks(event) {
   console.log(event.target);
   showBook = !showBook
@@ -172,6 +120,9 @@ function handleShowBooks(event) {
 
     const petList = document.getElementById('pets')
     petList.style.display = "none"
+
+    const userProfile = document.getElementById('user-profile-2')
+    userProfile.style.display = "none"
   } else {
     bookList.style.display = "none"
   }
@@ -192,6 +143,9 @@ function handleShowBrooms(event) {
 
     const petList = document.getElementById('pets')
     petList.style.display = "none"
+
+    const userProfile = document.getElementById('user-profile-2')
+    userProfile.style.display = "none"
   } else {
     broomList.style.display = "none"
   }
@@ -212,6 +166,9 @@ function handleShowWands(event) {
 
     const petList = document.getElementById('pets')
     petList.style.display = "none"
+
+    const userProfile = document.getElementById('user-profile-2')
+    userProfile.style.display = "none"
   } else {
     wandList.style.display = "none"
   }
@@ -232,13 +189,92 @@ function handleShowPets(event) {
 
     const bookList = document.getElementById('books')
     bookList.style.display = "none"
+
+    const userProfile = document.getElementById('user-profile-2')
+    userProfile.style.display = "none"
   } else {
     petList.style.display = "none"
   }
 }
 
+function handleShowUser(event) {
+  console.log(event.target);
+  showUser = !showUser
+  const userProfile = document.getElementById('user-profile-2')
+  if(showUser) {
+    userProfile.style.display = "block"
+
+    const broomList = document.getElementById('brooms')
+    broomList.style.display = "none"
+
+    const bookList = document.getElementById('books')
+    bookList.style.display = "none"
+
+    const wandList = document.getElementById('wands')
+    wandList.style.display = "none"
+
+    const petList = document.getElementById('pets')
+    petList.style.display = "none"
+  } else {
+    bookList.style.display = "none"
+  }
+}
+// End Toggle Menu Buttons to Show/Hide Different Stores
 
 
+// Begin Users Fetches & Functions
+let currentUser = ""
+function getOneUser() {
+  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`)
+  .then(resp => resp.json())
+  .then(console.log)
+}
+
+function postNewUser(userData) {
+  fetch('http://localhost:3000/api/v1/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+  .then(resp => resp.json())
+  .then(user => {
+    currentUser = user
+    console.log(currentUser);
+  })
+}
+
+function handleGetInfo(event) {
+  event.preventDefault()
+  const userName = event.target[0].value
+  const gryffindor = event.target[1].checked === true
+  const ravenclaw = event.target[2].checked === true
+  const slytherin = event.target[3].checked === true
+  const hufflepuff = event.target[4].checked === true
+
+  let userHouse
+
+  if(gryffindor) {
+    userHouse = "Gryffindor"
+  } else if (ravenclaw) {
+    userHouse = "Ravenclaw"
+  } else if (slytherin) {
+    userHouse = "Slytherin"
+  } else if (hufflepuff) {
+    userHouse = "hufflepuff"
+  } else {
+    return 'Please select a characteristic!'
+  }
+
+  const userData = {
+    name: userName,
+    house: userHouse
+  }
+
+  postNewUser(userData)
+}
+// End User Fetches & Functions
 
 
 // Book Fetches & Functions
@@ -325,7 +361,15 @@ function getOneBroom(broomId) {
 }
 
 function postAddBroom(broomId) {
-  // fetch()
+  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({broom_id: broomId})
+  })
+    .then(resp => resp.json())
+    .then(console.log)
 }
 
 function createBroomLi(broom) {
@@ -352,7 +396,7 @@ function handleDisplayBroom(event) {
 function handleAddBroom(event) {
   if(event.target.id === "add-broom") {
     const broomId = event.target.dataset.id
-    console.log(broomId);
+    postAddBroom(broomId)
   }
 }
 
@@ -383,12 +427,20 @@ function getOneWand(wandId) {
     .then(wand => {
       wandDetail.innerHTML = ""
       wandDetail.innerHTML += createWandDetail(wand)
-      // wandDetail.addEventListener("click", handleAddWand)
+      wandDetail.addEventListener("click", handleAddWand)
     })
 }
 
 function postAddWand(wandId) {
-  // fetch()
+  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({wand_id: wandId})
+  })
+    .then(resp => resp.json())
+    .then(console.log)
 }
 
 function createWandCard(wand) {
@@ -430,12 +482,12 @@ wandDetail.addEventListener('click', (e) => {
 //   getOneWand(wandId)
 // }
 //
-// function handleAddWand(event) {
-//   if(event.target.id === "add-wand") {
-//     const wandId = event.target.dataset.id
-//     console.log(wandId);
-//   }
-// }
+function handleAddWand(event) {
+  if(event.target.id === "add-wand") {
+    const wandId = event.target.dataset.id
+    postAddWand(wandId)
+  }
+}
 
 // END WAND FETCHES & FUNCTIONS
 
@@ -469,8 +521,8 @@ function getAllPets() {
 //     })
 // }
 
-function postAddPet(userId, petId) {
-  fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+function postAddPet(petId) {
+  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
