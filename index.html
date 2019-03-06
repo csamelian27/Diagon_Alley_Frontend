@@ -13,7 +13,7 @@
   <body>
 
     <!-- Modal -->
-    <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div class="modal fade in" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <!--Content-->
@@ -73,7 +73,8 @@
 
                 <!--Grid column-->
                 <div class="text-center mb-3 col-md-12">
-                  <input type="submit" class="btn btn-success btn-block btn-rounded z-depth-1" id="sign-up-btn"value="Sign Up"/>
+                  <input type="submit" class="btn btn-success btn-block btn-rounded z-depth-1" id="myFormSubmit" value="Sign Up"/>
+                  <button class="btn btn-success btn-block btn-rounded z-depth-1" id="closeForm" data-dismiss="modal">Close</button>
                 </div>
                 <!--Grid column-->
 
@@ -104,7 +105,7 @@
 
 
     <div class="text-center">
-      <a href="" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#darkModalForm">Create Account to Travel to Diagon Alley</a>
+      <a href="#myModal" role="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#darkModalForm">Create Account to Travel to Diagon Alley</a>
     </div>
 
   <!-- <h1>Welcome to Diagon Alley!</h1> -->
