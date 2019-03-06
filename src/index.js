@@ -793,13 +793,14 @@ function changeBroomBoolean(broomId) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({bought: true})
+    body: JSON.stringify({user_id: currentUser.id, bought: true})
   })
   .then(resp => resp.json())
   .then(broom => console.log(broom))
 }
 
 function createBroomLi(broom) {
+  console.log(broom);
   return `
     <li class="list-group-item" id="broom-li" data-id=${broom.id}>${broom.make}</li>
   `
