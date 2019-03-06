@@ -15,6 +15,28 @@
   border-radius: 5px;
 }
 
+#house-flag {
+  max-height: 300px;
+  max-width: auto;
+}
+
+#user-profile-2 {
+  margin-left: 11%;
+}
+
+#bg-div {
+ background-image: url("https://imgix.bustle.com/rehost/2016/9/13/70371c31-7d4c-4b46-839f-3225d06f8f99.jpg?w=970&h=546&fit=crop&crop=faces&auto=format&q=70");
+ /* background-color: #cccccc; */
+}
+
+#profile {
+
+}
+
+#supply-list {
+
+}
+
 /* End Cass CSS */
 
 /* MAP CSS */
