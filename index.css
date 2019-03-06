@@ -1,5 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300italic,500);
 
+/* Cass CSS */
+
+#book-li {
+  margin-left: 11%;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+#book-detail {
+  background-color: rgb(171,	226,	245);
+  position: absolute;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+/* End Cass CSS */
+
 /* MAP CSS */
 *{
   margin: 0px;
@@ -145,8 +162,8 @@ li a:hover{
 }
 /* END MODAL CSS */
 
-/* Begin User Profile CSS */
 
+/* Begin User Profile CSS */
 body{margin-top:20px;}
 
 .align-center, .center {
