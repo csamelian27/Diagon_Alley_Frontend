@@ -99,14 +99,8 @@ function precarica( img ) {
 document.addEventListener("DOMContentLoaded", () => {
   console.log("hi");
 
-
-  getAllWands()
-  getAllPets()
-
   const userForm = document.getElementById('user-name-form')
   userForm.addEventListener("submit", handleGetInfo)
-
-  getHogwarts()
 })
 
 // Begin Toggle Menu Buttons to Show/Hide Different Stores
@@ -966,7 +960,7 @@ function createPetCard(pet) {
   return `
     <div class="card-body col-md-3 ml-auto">
       <h2 class="card-title">${pet.name}</h2>
-      <img src="${pet.image_url}"/>
+      <img class="pet-img" src="${pet.image_url}"/>
       <p>Breed: ${pet.breed} ${pet.animal}</p>
       <p>Gender: ${pet.gender}</p>
       <p>Age: ${pet.age}</p>

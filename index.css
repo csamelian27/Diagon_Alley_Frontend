@@ -5,6 +5,18 @@
     text-transform: capitalize;
 }
 
+.pet-img {
+  max-height: auto;
+  max-width: 220px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.card-body {
+  height: 550px;
+  padding: 5px 5px 5px 5px;
+}
+
 #book-li {
   margin-left: 11%;
   margin-top: 5px;
