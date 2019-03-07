@@ -624,20 +624,32 @@ function createUserDetail(currentUser) {
     houseDiv.innerHTML = renderHouseCrest()
 
     const wandP = document.createElement('p')
-    if(currentUser.wand_id) {
-      wandP.innerText = "Wand Id: " + currentUser.wand_id
+		const wandButton = document.createElement('button')
+		wandButton.innerText = 'x'
+		wandButton.class = 'delete'
+		wandP.append(wandButton)
+    if(currentUser.wands.length) {
+      wandP.innerText = "Wand Type: " + currentUser.wands[0].wood
     } else {
       wandP.innerText = 'No wand purchased yet'
     }
     const broomP = document.createElement('p')
-    if(currentUser.broom_id) {
-      broomP.innerText = "Broom Id: " + currentUser.broom_id
+		const broomButton = document.createElement('button')
+		broomButton.innerText = 'x'
+		broomButton.class = 'delete'
+		broomP.append(broomButton)
+    if(currentUser.brooms.length) {
+      broomP.innerText = "Broom: " + currentUser.brooms[0].make
     } else {
       broomP.innerText = 'No broom purchased yet'
     }
     const petP = document.createElement('p')
-    if(currentUser.pet_id) {
-      petP.innerText = "Pet Id: " + currentUser.pet_id
+		const petButton = document.createElement('button')
+		petButton.innerText = 'x'
+		petButton.class = 'delete'
+		petP.append(petButton)
+    if(currentUser.pets.length) {
+      petP.innerText = "Pet Name: " + currentUser.pets[0].name
     } else {
       petP.innerText = 'No pet purchased yet'
     }
@@ -827,6 +839,7 @@ function handleDisplayBroom(event) {
 function handleAddBroom(event) {
   if(event.target.id === "add-broom") {
     const broomId = event.target.dataset.id
+		event.target.innerText = 'Bought!'
     postUserBroom(broomId)
   }
 }
@@ -915,6 +928,7 @@ wandDetail.addEventListener('click', (e) => {
 function handleAddWand(event) {
   if(event.target.id === "add-wand") {
     const wandId = event.target.dataset.id
+		event.target.innerText = 'Bought!'
     postUserWand(wandId)
   }
 }
@@ -979,6 +993,7 @@ function createPetCard(pet) {
 function handleAddPet(event) {
   if(event.target.tagName === 'BUTTON') {
     const petId = event.target.dataset.id
+		event.target.innerText = 'Sold!'
     postUserPet(petId)
   }
 }
