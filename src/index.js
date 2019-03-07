@@ -780,7 +780,7 @@ function getOneBroom(broomId) {
 }
 
 function postAddBroom(broomId) {
-  fetch(`http://localhost:3000/api/v1/user_broom` {
+  fetch(`http://localhost:3000/api/v1/user_brooms`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -865,7 +865,7 @@ function getOneWand(wandId) {
 }
 
 function postAddWand(wandId) {
-  fetch(`http://localhost:3000/api/v1/user_brooms`, {
+  fetch(`http://localhost:3000/api/v1/user_wands`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
