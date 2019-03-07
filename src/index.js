@@ -719,8 +719,20 @@ function getOneBook(bookId) {
     })
 }
 
-function postAddBook(bookId) {
-  // fetch()
+let currentBook = ""
+function postUserBook(bookId) {
+  fetch("http://localhost:3000/api/v1/user_books", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({book_id: bookId, user_id: currentUser.id})
+  })
+  .then(resp => resp.json())
+  .then(userBook => {
+    currentBook = userBook
+    console.log(currentBook);
+  })
 }
 
 function createBookLi(book) {
@@ -746,18 +758,13 @@ function handleDisplayBook(event) {
 function handleAddBook(event) {
   if(event.target.id === "add-book") {
     const bookId = event.target.dataset.id
-    console.log(bookId);
+    postUserBook(bookId)
   }
 }
 
 
 
 // Broom Fetches & Functions
-// document.addEventListener("DOMContentLoaded", () => {
-//   console.log("hi");
-//   // getAllBrooms()
-// })
-
 function getAllBrooms() {
   fetch("http://localhost:3000/api/v1/brooms")
     .then(resp => resp.json())
@@ -780,28 +787,20 @@ function getOneBroom(broomId) {
     })
 }
 
-function postAddBroom(broomId) {
-  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`, {
-    method: 'PATCH',
+let currentBroom = ""
+function postUserBroom(broomId) {
+  fetch("http://localhost:3000/api/v1/user_brooms", {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({broom_id: broomId})
-  })
-    .then(resp => resp.json())
-    .then(console.log)
-}
-
-function changeBroomBoolean(broomId) {
-  fetch(`http://localhost:3000/api/v1/brooms/${broomId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({user_id: currentUser.id, bought: true})
+    body: JSON.stringify({broom_id: broomId, user_id: currentUser.id})
   })
   .then(resp => resp.json())
-  .then(broom => console.log(broom))
+  .then(userBroom => {
+    currentBroom = userBroom
+    console.log(currentBroom);
+  })
 }
 
 function createBroomLi(broom) {
@@ -828,8 +827,7 @@ function handleDisplayBroom(event) {
 function handleAddBroom(event) {
   if(event.target.id === "add-broom") {
     const broomId = event.target.dataset.id
-    postAddBroom(broomId)
-    changeBroomBoolean(broomId)
+    postUserBroom(broomId)
   }
 }
 
@@ -837,11 +835,6 @@ function handleAddBroom(event) {
 
 
 // Wand Fetches & Functions
-// document.addEventListener("DOMContentLoaded", () => {
-//   console.log("hi");
-//   // getAllWands()
-// })
-
 const wandDetail = document.getElementById('wand-detail')
 
 function getAllWands() {
@@ -864,31 +857,21 @@ function getOneWand(wandId) {
     })
 }
 
-function postAddWand(wandId) {
-  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`, {
-    method: 'PATCH',
+let currentWand = ""
+function postUserWand(wandId) {
+  fetch("http://localhost:3000/api/v1/user_wands", {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({wand_id: wandId})
-  })
-    .then(resp => resp.json())
-    .then(console.log)
-}
-
-
-function changeWandBoolean(wandId) {
-  fetch(`http://localhost:3000/api/v1/wands/${wandId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({bought: true})
+    body: JSON.stringify({wand_id: wandId, user_id: currentUser.id})
   })
   .then(resp => resp.json())
-  .then(wand => console.log(wand))
+  .then(userWand => {
+    currentWand = userWand
+    console.log(currentWand);
+  })
 }
-
 
 function createWandCard(wand) {
   return `
@@ -932,8 +915,7 @@ wandDetail.addEventListener('click', (e) => {
 function handleAddWand(event) {
   if(event.target.id === "add-wand") {
     const wandId = event.target.dataset.id
-    postAddWand(wandId)
-    changeWandBoolean(wandId)
+    postUserWand(wandId)
   }
 }
 
@@ -943,11 +925,6 @@ function handleAddWand(event) {
 
 
 // Pet Fetches & Functions
-// document.addEventListener("DOMContentLoaded", () => {
-//   console.log("hi");
-//   // getAllPets()
-// })
-
 function getAllPets() {
   fetch("http://localhost:3000/api/v1/pets")
     .then(resp => resp.json())
@@ -969,28 +946,20 @@ function getAllPets() {
 //     })
 // }
 
-function postAddPet(petId) {
-  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`, {
-    method: 'PATCH',
+let currentPet = ""
+function postUserPet(petId) {
+  fetch("http://localhost:3000/api/v1/user_pets", {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({pet_id: petId})
-  })
-    .then(resp => resp.json())
-    .then(console.log)
-}
-
-function changePetBoolean(petId) {
-  fetch(`http://localhost:3000/api/v1/pets/${petId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({bought: true})
+    body: JSON.stringify({pet_id: petId, user_id: currentUser.id})
   })
   .then(resp => resp.json())
-  .then(pet => console.log(pet))
+  .then(userPet => {
+    currentPet = userPet
+    console.log(currentPet);
+  })
 }
 
 function createPetCard(pet) {
@@ -1007,22 +976,9 @@ function createPetCard(pet) {
   `
 }
 
-// function createPetDetail(pet) {
-//   return `
-//     <h2>${pet.name}</h2>
-//     <img src="${pet.image_url}"/>
-//     <p>Breed: ${pet.breed} ${pet.animal}</p>
-//     <p>Gender: ${pet.gender}</p>
-//     <p>Age: ${pet.age}</p>
-//     <p>Previous Owner: ${pet.former_owner}</p>
-//     <button data-id="${pet.id}" class="btn btn-info" id="add-pet">Buy Pet!</button>
-//   `
-// }
-
 function handleAddPet(event) {
   if(event.target.tagName === 'BUTTON') {
     const petId = event.target.dataset.id
-    postAddPet(petId)
-    changePetBoolean(petId)
+    postUserPet(petId)
   }
 }
