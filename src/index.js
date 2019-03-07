@@ -610,9 +610,9 @@ function createUserDetail(currentUser) {
     supplyListDiv.className = "supply-list col-md-4"
     supplyListDiv.id = "supply-list"
 
-    const nameH1 = document.createElement('h1')
-    nameH1.className = "capitalize"
-    nameH1.innerText = currentUser.name
+    const nameH2 = document.createElement('h2')
+    nameH2.className = "capitalize"
+    nameH2.innerText = currentUser.name
 
     const houseDiv = document.createElement('div')
     houseDiv.innerHTML = renderHouseCrest()
@@ -653,7 +653,7 @@ function createUserDetail(currentUser) {
     supplyListDiv.append(supplyHeader)
 
     userProfile.append(profileDiv, supplyListDiv)
-    profileDiv.append(nameH1, houseDiv, wandP, broomP, petP, editUserButton, deleteUserButton)
+    profileDiv.append(nameH2, houseDiv, wandP, broomP, petP, editUserButton, deleteUserButton)
 
 }
 
