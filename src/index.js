@@ -737,10 +737,15 @@ function createBookLi(book) {
 
 function createBookDetail(book) {
   return `
+    <div id="book-detail-padding">
     <h2>${book.title}</h2>
-    <p>Written by: ${book.author}</p>
-    <p>Subject: ${book.subject}</p>
+    <img id="book-img" src="${book.image_url}"/><br>
+    <label>Written by: </label>
+    <p>${book.author}</p>
+    <label>Subject: </label>
+    <p>${book.subject}</p>
     <button data-id="${book.id}" class="btn btn-info" id="add-book">Buy Book!</button>
+    </div>
   `
 }
 
@@ -805,11 +810,15 @@ function createBroomLi(broom) {
 
 function createBroomDetail(broom) {
   return `
+    <div id="broom-detail-padding">
     <h2>${broom.make}</h2>
-    <img src="${broom.image_url}"/>
-    <p>Maker: ${broom.creator}</p>
-    <p>Purpose: ${broom.utility}</p>
+    <img id="broom-img" src="${broom.image_url}"/><br>
+    <label>Maker: </label>
+    <p>${broom.creator}</p>
+    <label>Purpose: </label>
+    <p>${broom.utility}</p>
     <button data-id="${broom.id}" class="btn btn-info" id="add-broom">Buy Broom!</button>
+    </div>
   `
 }
 
@@ -960,11 +969,12 @@ function createPetCard(pet) {
   return `
     <div class="card-body col-md-3 ml-auto">
       <h2 class="card-title">${pet.name}</h2>
-      <img class="pet-img" src="${pet.image_url}"/>
-      <p>Breed: ${pet.breed} ${pet.animal}</p>
-      <p>Gender: ${pet.gender}</p>
-      <p>Age: ${pet.age}</p>
-      <p>Previous Owner: ${pet.former_owner}</p>
+      <p id="pet-breed">${pet.breed} ${pet.animal}</p>
+      <img class="pet-img" src="${pet.image_url}"/><br>
+      <label>Gender: </label><p>${pet.gender}</p>
+      <label>Age: </label><p>${pet.age} Years Old</p>
+      <label>Previous Owner: </label>
+      <p>${pet.former_owner}</p>
       <button data-id="${pet.id}" data-user-id="" class="btn btn-dark" id="add-pet">Buy Pet!</button><br><br>
     </div>
   `
@@ -976,3 +986,13 @@ function handleAddPet(event) {
     postUserPet(petId)
   }
 }
+
+
+
+
+
+
+
+
+
+//
