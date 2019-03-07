@@ -1,11 +1,78 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300italic,500);
+<style>
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Indie+Flower');
+</style>
 
 /* Cass CSS */
 .capitalize {
     text-transform: capitalize;
 }
 
+.pet-img {
+  max-height: 300px;
+  max-width: 230px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.wand-avatar {
+  max-height: 300px;
+  max-width: 230px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+#broom-img {
+  max-height: 400px;
+  max-width: auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+#book-img {
+  max-height: 150px;
+  max-width: auto;
+}
+
+#book-detail-padding {
+  padding: 10px 10px 10px 10px;
+  height: 27em;
+  width: 46em;
+  text-align: center
+}
+
+#broom-detail-padding {
+  background-color: rgb(171,	226,	245);
+  position: absolute;
+  margin-top: 2em;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+  height: 46em;
+  width: 46em;
+  text-align: center;
+}
+
+.card-body {
+  height: 650px;
+  padding: 5px 5px 5px 5px;
+}
+
+#pet-list-group {
+  /* background-image: url("https://static.wixstatic.com/media/ad6c4b_e0ba7eb452044f1eb9191aff06839594~mv2_d_4032_2268_s_2.jpg/v1/fill/w_1600,h_900,al_c,q_90/file.jpg");
+  background-color: #cccccc; */
+}
+
+#supply-list {
+  font-family: 'Indie Flower', cursive;
+}
+
 #book-li {
+  margin-left: 11%;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+#broom-li {
   margin-left: 11%;
   margin-top: 5px;
   border-radius: 5px;
@@ -24,7 +91,17 @@
 }
 
 #user-profile-2 {
-  margin-left: 11%;
+  background-color: rgb(171,	226,	245);
+  position: absolute;
+  margin-top: 5em;
+  margin-bottom: 5em;
+  border-radius: 5px;
+  margin-left: 15em;
+  text-align: center;
+}
+
+#house-flag {
+  border-radius: 5px;
 }
 
 #bg-div {
@@ -37,7 +114,8 @@
 }
 
 #supply-list {
-
+  padding: 50px 50px 50px 50px;
+  text-align: center;
 }
 
 /* End Cass CSS */
