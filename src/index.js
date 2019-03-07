@@ -803,28 +803,10 @@ function getOneBroom(broomId) {
     })
 }
 
-<<<<<<< HEAD
-function postAddBroom(broomId) {
-  fetch(`http://localhost:3000/api/v1/user_brooms`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({broom_id: broomId, user_id:currentUser.id})
-  })
-    .then(resp => resp.json())
-    .then(console.log)
-}
-
-function changeBroomBoolean(broomId) {
-  fetch(`http://localhost:3000/api/v1/brooms/${broomId}`, {
-    method: 'PATCH',
-=======
 let currentBroom = ""
 function postUserBroom(broomId) {
   fetch("http://localhost:3000/api/v1/user_brooms", {
     method: 'POST',
->>>>>>> master
     headers: {
       'Content-Type': 'application/json'
     },
@@ -861,14 +843,8 @@ function handleDisplayBroom(event) {
 function handleAddBroom(event) {
   if(event.target.id === "add-broom") {
     const broomId = event.target.dataset.id
-<<<<<<< HEAD
-		event.target.innerText = 'Sold Out!'
-    postAddBroom(broomId)
-    changeBroomBoolean(broomId)
-=======
 		event.target.innerText = 'Bought!'
     postUserBroom(broomId)
->>>>>>> master
   }
 }
 
@@ -898,30 +874,10 @@ function getOneWand(wandId) {
     })
 }
 
-<<<<<<< HEAD
-function postAddWand(wandId) {
-  fetch(`http://localhost:3000/api/v1/user_wands`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({wand_id: wandId, user_id:currentUser.id})
-  })
-    .then(resp => resp.json())
-    .then(console.log)
-
-}
-
-
-function changeWandBoolean(wandId) {
-  fetch(`http://localhost:3000/api/v1/wands/${wandId}`, {
-    method: 'PATCH',
-=======
 let currentWand = ""
 function postUserWand(wandId) {
   fetch("http://localhost:3000/api/v1/user_wands", {
     method: 'POST',
->>>>>>> master
     headers: {
       'Content-Type': 'application/json'
     },
@@ -976,15 +932,8 @@ wandDetail.addEventListener('click', (e) => {
 function handleAddWand(event) {
   if(event.target.id === "add-wand") {
     const wandId = event.target.dataset.id
-<<<<<<< HEAD
-		bought = true
-		event.target.innerText = 'Sold'
-    postAddWand(wandId)
-    changeWandBoolean(wandId)
-=======
 		event.target.innerText = 'Bought!'
     postUserWand(wandId)
->>>>>>> master
   }
 
 }
@@ -1016,28 +965,10 @@ function getAllPets() {
 //     })
 // }
 
-<<<<<<< HEAD
-function postAddPet(petId) {
-  fetch(`http://localhost:3000/api/v1/user_pets`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({pet_id: petId, user_id:currentUser.id})
-  })
-    .then(resp => resp.json())
-    .then(console.log)
-}
-
-function changePetBoolean(petId) {
-  fetch(`http://localhost:3000/api/v1/pets/${petId}`, {
-    method: 'PATCH',
-=======
 let currentPet = ""
 function postUserPet(petId) {
   fetch("http://localhost:3000/api/v1/user_pets", {
     method: 'POST',
->>>>>>> master
     headers: {
       'Content-Type': 'application/json'
     },
@@ -1068,11 +999,6 @@ function handleAddPet(event) {
   if(event.target.tagName === 'BUTTON') {
     const petId = event.target.dataset.id
 		event.target.innerText = 'Sold!'
-<<<<<<< HEAD
-    postAddPet(petId)
-    changePetBoolean(petId)
-=======
     postUserPet(petId)
->>>>>>> master
   }
 }
