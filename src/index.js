@@ -879,9 +879,8 @@ function postUserWand(wandId) {
 function createWandCard(wand) {
   return `
     <div class="card">
-    <h2>Wood Type: ${wand.wood}</h2>
-  	<img src=${wand.image_url} class="wand-avatar"/>
-  	<p> Core: ${wand.core}</p>
+    <h2>${wand.wood} + ${wand.core}</h2>
+  	<img src=${wand.image_url} class="wand-avatar"/><br>
   	<button data-id=${wand.id} class='wand-card'> See More Details </button>
   	</div>
   `
