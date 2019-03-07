@@ -617,6 +617,7 @@ function createUserDetail(currentUser) {
     supplyListDiv.id = "supply-list"
 
     const nameH1 = document.createElement('h1')
+    nameH1.className = "capitalize"
     nameH1.innerText = currentUser.name
 
     const houseDiv = document.createElement('div')
