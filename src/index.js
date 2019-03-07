@@ -768,6 +768,10 @@ function getOneBroom(broomId) {
     .then(resp => resp.json())
     .then(broom => {
       console.log(broom);
+			if(broom.bought === true){
+				document.querySelector('#add-broom').innerText = 'Sold';
+			}
+
       const broomDetail = document.getElementById('broom-detail')
       broomDetail.innerHTML = ""
       broomDetail.innerHTML += createBroomDetail(broom)
@@ -776,12 +780,12 @@ function getOneBroom(broomId) {
 }
 
 function postAddBroom(broomId) {
-  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`, {
-    method: 'PATCH',
+  fetch(`http://localhost:3000/api/v1/user_broom` {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({broom_id: broomId})
+    body: JSON.stringify({broom_id: broomId, user_id:currentUser})
   })
     .then(resp => resp.json())
     .then(console.log)
@@ -861,12 +865,12 @@ function getOneWand(wandId) {
 }
 
 function postAddWand(wandId) {
-  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`, {
-    method: 'PATCH',
+  fetch(`http://localhost:3000/api/v1/user_brooms`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({wand_id: wandId})
+    body: JSON.stringify({wand_id: wandId, user_id:currentUser})
   })
     .then(resp => resp.json())
     .then(console.log)
@@ -970,12 +974,12 @@ function getAllPets() {
 // }
 
 function postAddPet(petId) {
-  fetch(`http://localhost:3000/api/v1/users/${currentUser.id}`, {
-    method: 'PATCH',
+  fetch(`http://localhost:3000/api/v1/user_pets`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({pet_id: petId})
+    body: JSON.stringify({pet_id: petId, user_id:currentUser})
   })
     .then(resp => resp.json())
     .then(console.log)
