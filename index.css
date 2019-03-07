@@ -54,6 +54,7 @@ body {
 }
 
 .container{
+  border-radius: 5px;
   overflow: hidden;
   text-align: center;
   background: -moz-linear-gradient(top,  rgba(169,228,247,1) 0%, rgba(153,	150,	198, 1) 100%); /* FF3.6-15 */
