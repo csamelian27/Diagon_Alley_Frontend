@@ -59,7 +59,7 @@ function precarica( img ) {
 			'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-blue.png'
 		]);
 
-/*******jQuery for external title*********/
+  /*******jQuery for external title*********/
 
 	jQuery(document).ready(function () {
 		$('.title-blue').mouseout(function(){
@@ -98,8 +98,8 @@ function precarica( img ) {
 // Begin index.js stuff
 document.addEventListener("DOMContentLoaded", () => {
   console.log("hi");
-  getAllBooks()
-  getAllBrooms()
+
+
   getAllWands()
   getAllPets()
 
@@ -115,6 +115,7 @@ function handleShowBooks(event) {
   showBook = !showBook
   const bookList = document.getElementById('books')
   if(showBook) {
+    getAllBooks()
     bookList.style.display = "block"
 
     const broomList = document.getElementById('brooms')
@@ -138,6 +139,7 @@ function handleShowBrooms(event) {
   showBroom = !showBroom
   const broomList = document.getElementById('brooms')
   if(showBroom) {
+    getAllBrooms()
     broomList.style.display = "block"
 
     const bookList = document.getElementById('books')
@@ -161,6 +163,7 @@ function handleShowWands(event) {
   showWand = !showWand
   const wandList = document.getElementById('wands')
   if(showWand) {
+    getAllWands()
     wandList.style.display = "block"
 
     const broomList = document.getElementById('brooms')
@@ -184,6 +187,7 @@ function handleShowPets(event) {
   showPet = !showPet
   const petList = document.getElementById('pets')
   if(showPet) {
+    getAllPets()
     petList.style.display = "block"
 
     const broomList = document.getElementById('brooms')
@@ -800,7 +804,6 @@ function changeBroomBoolean(broomId) {
 }
 
 function createBroomLi(broom) {
-  console.log(broom);
   return `
     <li class="list-group-item" id="broom-li" data-id=${broom.id}>${broom.make}</li>
   `
