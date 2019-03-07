@@ -785,7 +785,7 @@ function postAddBroom(broomId) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({broom_id: broomId, user_id:currentUser})
+    body: JSON.stringify({broom_id: broomId, user_id:currentUser.id})
   })
     .then(resp => resp.json())
     .then(console.log)
@@ -870,7 +870,7 @@ function postAddWand(wandId) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({wand_id: wandId, user_id:currentUser})
+    body: JSON.stringify({wand_id: wandId, user_id:currentUser.id})
   })
     .then(resp => resp.json())
     .then(console.log)
@@ -979,7 +979,7 @@ function postAddPet(petId) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({pet_id: petId, user_id:currentUser})
+    body: JSON.stringify({pet_id: petId, user_id:currentUser.id})
   })
     .then(resp => resp.json())
     .then(console.log)
