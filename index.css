@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300italic,500);
 
 /* Cass CSS */
+.capitalize {
+    text-transform: capitalize;
+}
 
 #book-li {
   margin-left: 11%;
@@ -39,6 +42,7 @@
 
 /* End Cass CSS */
 
+
 /* MAP CSS */
 *{
   margin: 0px;
@@ -50,6 +54,7 @@ body {
 }
 
 .container{
+  border-radius: 5px;
   overflow: hidden;
   text-align: center;
   background: -moz-linear-gradient(top,  rgba(169,228,247,1) 0%, rgba(153,	150,	198, 1) 100%); /* FF3.6-15 */
@@ -118,6 +123,15 @@ li a:hover{
 
 
 /* MODAL CSS */
+.modal-content {
+  max-width: 65%;
+  margin: auto;
+}
+
+.md-form {
+  font-size: 15px;
+}
+
 .form-dark .font-small {
   font-size: 0.8rem; }
 

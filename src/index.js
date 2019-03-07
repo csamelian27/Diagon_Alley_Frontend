@@ -59,7 +59,7 @@ function precarica( img ) {
 			'http://www.sarabianchi.it/code-images/mappa-interattiva/img/map-blue.png'
 		]);
 
-/*******jQuery for external title*********/
+  /*******jQuery for external title*********/
 
 	jQuery(document).ready(function () {
 		$('.title-blue').mouseout(function(){
@@ -98,8 +98,8 @@ function precarica( img ) {
 // Begin index.js stuff
 document.addEventListener("DOMContentLoaded", () => {
   console.log("hi");
-  getAllBooks()
-  getAllBrooms()
+
+
   getAllWands()
   getAllPets()
 
@@ -115,6 +115,7 @@ function handleShowBooks(event) {
   showBook = !showBook
   const bookList = document.getElementById('books')
   if(showBook) {
+    getAllBooks()
     bookList.style.display = "block"
 
     const broomList = document.getElementById('brooms')
@@ -138,6 +139,7 @@ function handleShowBrooms(event) {
   showBroom = !showBroom
   const broomList = document.getElementById('brooms')
   if(showBroom) {
+    getAllBrooms()
     broomList.style.display = "block"
 
     const bookList = document.getElementById('books')
@@ -161,6 +163,7 @@ function handleShowWands(event) {
   showWand = !showWand
   const wandList = document.getElementById('wands')
   if(showWand) {
+    getAllWands()
     wandList.style.display = "block"
 
     const broomList = document.getElementById('brooms')
@@ -184,6 +187,7 @@ function handleShowPets(event) {
   showPet = !showPet
   const petList = document.getElementById('pets')
   if(showPet) {
+    getAllPets()
     petList.style.display = "block"
 
     const broomList = document.getElementById('brooms')
@@ -613,26 +617,39 @@ function createUserDetail(currentUser) {
     supplyListDiv.id = "supply-list"
 
     const nameH1 = document.createElement('h1')
+    nameH1.className = "capitalize"
     nameH1.innerText = currentUser.name
 
     const houseDiv = document.createElement('div')
     houseDiv.innerHTML = renderHouseCrest()
 
     const wandP = document.createElement('p')
-    if(currentUser.wand_id) {
-      wandP.innerText = "Wand Id: " + currentUser.wand_id
+		const wandButton = document.createElement('button')
+		wandButton.innerText = 'x'
+		wandButton.class = 'delete'
+		wandP.append(wandButton)
+    if(currentUser.wands.length) {
+      wandP.innerText = "Wand Type: " + currentUser.wands[0].wood
     } else {
       wandP.innerText = 'No wand purchased yet'
     }
     const broomP = document.createElement('p')
-    if(currentUser.broom_id) {
-      broomP.innerText = "Broom Id: " + currentUser.broom_id
+		const broomButton = document.createElement('button')
+		broomButton.innerText = 'x'
+		broomButton.class = 'delete'
+		broomP.append(broomButton)
+    if(currentUser.brooms.length) {
+      broomP.innerText = "Broom: " + currentUser.brooms[0].make
     } else {
       broomP.innerText = 'No broom purchased yet'
     }
     const petP = document.createElement('p')
-    if(currentUser.pet_id) {
-      petP.innerText = "Pet Id: " + currentUser.pet_id
+		const petButton = document.createElement('button')
+		petButton.innerText = 'x'
+		petButton.class = 'delete'
+		petP.append(petButton)
+    if(currentUser.pets.length) {
+      petP.innerText = "Pet Name: " + currentUser.pets[0].name
     } else {
       petP.innerText = 'No pet purchased yet'
     }
@@ -714,8 +731,20 @@ function getOneBook(bookId) {
     })
 }
 
-function postAddBook(bookId) {
-  // fetch()
+let currentBook = ""
+function postUserBook(bookId) {
+  fetch("http://localhost:3000/api/v1/user_books", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({book_id: bookId, user_id: currentUser.id})
+  })
+  .then(resp => resp.json())
+  .then(userBook => {
+    currentBook = userBook
+    console.log(currentBook);
+  })
 }
 
 function createBookLi(book) {
@@ -741,18 +770,13 @@ function handleDisplayBook(event) {
 function handleAddBook(event) {
   if(event.target.id === "add-book") {
     const bookId = event.target.dataset.id
-    console.log(bookId);
+    postUserBook(bookId)
   }
 }
 
 
 
 // Broom Fetches & Functions
-// document.addEventListener("DOMContentLoaded", () => {
-//   console.log("hi");
-//   // getAllBrooms()
-// })
-
 function getAllBrooms() {
   fetch("http://localhost:3000/api/v1/brooms")
     .then(resp => resp.json())
@@ -779,6 +803,7 @@ function getOneBroom(broomId) {
     })
 }
 
+<<<<<<< HEAD
 function postAddBroom(broomId) {
   fetch(`http://localhost:3000/api/v1/user_brooms`, {
     method: 'POST',
@@ -794,13 +819,22 @@ function postAddBroom(broomId) {
 function changeBroomBoolean(broomId) {
   fetch(`http://localhost:3000/api/v1/brooms/${broomId}`, {
     method: 'PATCH',
+=======
+let currentBroom = ""
+function postUserBroom(broomId) {
+  fetch("http://localhost:3000/api/v1/user_brooms", {
+    method: 'POST',
+>>>>>>> master
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({bought: true})
+    body: JSON.stringify({broom_id: broomId, user_id: currentUser.id})
   })
   .then(resp => resp.json())
-  .then(broom => console.log(broom))
+  .then(userBroom => {
+    currentBroom = userBroom
+    console.log(currentBroom);
+  })
 }
 
 function createBroomLi(broom) {
@@ -827,9 +861,14 @@ function handleDisplayBroom(event) {
 function handleAddBroom(event) {
   if(event.target.id === "add-broom") {
     const broomId = event.target.dataset.id
+<<<<<<< HEAD
 		event.target.innerText = 'Sold Out!'
     postAddBroom(broomId)
     changeBroomBoolean(broomId)
+=======
+		event.target.innerText = 'Bought!'
+    postUserBroom(broomId)
+>>>>>>> master
   }
 }
 
@@ -837,11 +876,6 @@ function handleAddBroom(event) {
 
 
 // Wand Fetches & Functions
-// document.addEventListener("DOMContentLoaded", () => {
-//   console.log("hi");
-//   // getAllWands()
-// })
-
 const wandDetail = document.getElementById('wand-detail')
 
 function getAllWands() {
@@ -864,6 +898,7 @@ function getOneWand(wandId) {
     })
 }
 
+<<<<<<< HEAD
 function postAddWand(wandId) {
   fetch(`http://localhost:3000/api/v1/user_wands`, {
     method: 'POST',
@@ -881,15 +916,23 @@ function postAddWand(wandId) {
 function changeWandBoolean(wandId) {
   fetch(`http://localhost:3000/api/v1/wands/${wandId}`, {
     method: 'PATCH',
+=======
+let currentWand = ""
+function postUserWand(wandId) {
+  fetch("http://localhost:3000/api/v1/user_wands", {
+    method: 'POST',
+>>>>>>> master
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({bought: true})
+    body: JSON.stringify({wand_id: wandId, user_id: currentUser.id})
   })
   .then(resp => resp.json())
-  .then(wand => console.log(wand))
+  .then(userWand => {
+    currentWand = userWand
+    console.log(currentWand);
+  })
 }
-
 
 function createWandCard(wand) {
   return `
@@ -933,10 +976,15 @@ wandDetail.addEventListener('click', (e) => {
 function handleAddWand(event) {
   if(event.target.id === "add-wand") {
     const wandId = event.target.dataset.id
+<<<<<<< HEAD
 		bought = true
 		event.target.innerText = 'Sold'
     postAddWand(wandId)
     changeWandBoolean(wandId)
+=======
+		event.target.innerText = 'Bought!'
+    postUserWand(wandId)
+>>>>>>> master
   }
 
 }
@@ -947,11 +995,6 @@ function handleAddWand(event) {
 
 
 // Pet Fetches & Functions
-// document.addEventListener("DOMContentLoaded", () => {
-//   console.log("hi");
-//   // getAllPets()
-// })
-
 function getAllPets() {
   fetch("http://localhost:3000/api/v1/pets")
     .then(resp => resp.json())
@@ -973,6 +1016,7 @@ function getAllPets() {
 //     })
 // }
 
+<<<<<<< HEAD
 function postAddPet(petId) {
   fetch(`http://localhost:3000/api/v1/user_pets`, {
     method: 'POST',
@@ -988,13 +1032,22 @@ function postAddPet(petId) {
 function changePetBoolean(petId) {
   fetch(`http://localhost:3000/api/v1/pets/${petId}`, {
     method: 'PATCH',
+=======
+let currentPet = ""
+function postUserPet(petId) {
+  fetch("http://localhost:3000/api/v1/user_pets", {
+    method: 'POST',
+>>>>>>> master
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({bought: true})
+    body: JSON.stringify({pet_id: petId, user_id: currentUser.id})
   })
   .then(resp => resp.json())
-  .then(pet => console.log(pet))
+  .then(userPet => {
+    currentPet = userPet
+    console.log(currentPet);
+  })
 }
 
 function createPetCard(pet) {
@@ -1011,23 +1064,15 @@ function createPetCard(pet) {
   `
 }
 
-// function createPetDetail(pet) {
-//   return `
-//     <h2>${pet.name}</h2>
-//     <img src="${pet.image_url}"/>
-//     <p>Breed: ${pet.breed} ${pet.animal}</p>
-//     <p>Gender: ${pet.gender}</p>
-//     <p>Age: ${pet.age}</p>
-//     <p>Previous Owner: ${pet.former_owner}</p>
-//     <button data-id="${pet.id}" class="btn btn-info" id="add-pet">Buy Pet!</button>
-//   `
-// }
-
 function handleAddPet(event) {
   if(event.target.tagName === 'BUTTON') {
     const petId = event.target.dataset.id
 		event.target.innerText = 'Sold!'
+<<<<<<< HEAD
     postAddPet(petId)
     changePetBoolean(petId)
+=======
+    postUserPet(petId)
+>>>>>>> master
   }
 }
