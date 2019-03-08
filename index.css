@@ -8,6 +8,10 @@
     text-transform: capitalize;
 }
 
+audio {
+  display: none;
+}
+
 .pet-img {
   max-height: 300px;
   max-width: 230px;
@@ -89,7 +93,7 @@
 #book-detail-padding {
   padding: 10px 10px 10px 10px;
   height: 26.5em;
-  width: 46em;
+  width: 48em;
   text-align: center
 }
 
@@ -101,7 +105,7 @@
   border-radius: 5px;
   padding: 10px 10px 10px 10px;
   height: 33.5em;
-  width: 30em;
+  width: 35em;
   text-align: center;
 }
 
@@ -123,13 +127,13 @@
 }
 
 #book-li {
-  margin-left: 13%;
+  margin-left: 17%;
   margin-top: 0.5em;
   border-radius: 5px;
 }
 
 #broom-li {
-  margin-left: 13%;
+  margin-left: 17%;
   margin-top: 5px;
   border-radius: 5px;
 }
