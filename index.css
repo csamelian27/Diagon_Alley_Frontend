@@ -29,12 +29,12 @@
 }
 
 #wand-own-label {
-  font-size: 30px;
+  font-size: 25px;
   color: white;
 }
 
 #wand-own {
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 
@@ -44,8 +44,12 @@
 
 #wand-detail-img {
   border-radius: 5px;
-  max-height: 300px;
+  max-height: 250px;
   max-width: auto;
+}
+
+#wand-card {
+  text-align: center;
 }
 
 #wand-detail label {

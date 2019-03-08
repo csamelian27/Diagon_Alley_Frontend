@@ -674,7 +674,7 @@ function postUserWand(wandId) {
 
 function createWandCard(wand) {
   return `
-    <div class="card" id="wand-card">
+    <div class="card col-md-4" id="wand-card">
     <h3 id="wand-own-label">Formerly Owned By:</h3>
     <h5 id="wand-own">${wand.famous_owners}</h5>
   	<img src=${wand.image_url} class="wand-avatar"/><br>
