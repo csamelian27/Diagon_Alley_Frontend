@@ -222,7 +222,7 @@ function handleShowUser(event) {
   } else if(!currentUser){
     bookList.style.display = "none"
     console.log("suppppp");
-    alert("Sorry, you must sign in! Create your Hogwarts Profile now!");
+    alert("Sorry, you must register for Hogwarts first!");
   }
 }
 
@@ -358,7 +358,7 @@ function createUserDetail(currentUser) {
     wandImg.id = "user-wand-img"
     const wandLabel = document.createElement('label')
     if(currentUser.wands.length) {
-      wandLabel.innerText = "Wand:"
+      wandLabel.innerText = "Wand: " + currentWand.wand.wood + " + " + currentWand.wand.core
       wandImg.src = currentWand.wand.image_url
     } else {
       wandLabel.innerText = "Wand: No wand purchased yet"
@@ -368,7 +368,7 @@ function createUserDetail(currentUser) {
     bookImg.id = "user-book-img"
     const bookLabel = document.createElement('label')
     if(currentUser.books.length) {
-      bookLabel.innerText = "Book:"
+      bookLabel.innerText = "Book: " + currentBook.book.title
       bookImg.src = currentBook.book.image_url
     } else {
       bookLabel.innerText = "Book: No book purchased yet"
@@ -378,7 +378,7 @@ function createUserDetail(currentUser) {
     broomImg.id = "user-broom-img"
     const broomLabel = document.createElement('label')
     if(currentUser.brooms.length) {
-      broomLabel.innerText = "Broom:"
+      broomLabel.innerText = "Broom: " + currentBroom.broom.make
       broomImg.src = currentBroom.broom.image_url
     } else {
       broomLabel.innerText = "Broom: No broom purchased yet"
@@ -474,7 +474,7 @@ function handleDeleteUser(event) {
 
 function showDeletePage() {
   const body = document.querySelector('body')
-  body.innerText = "GOODBYE!"
+  body.innerHTML = `<a href="#" id="back" onclick="location.href = document.referrer; return false;"> Return To Diagon Alley</a>`
 }
 // End User Fetches & Functions
 

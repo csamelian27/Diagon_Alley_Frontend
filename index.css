@@ -36,9 +36,9 @@
 }
 
 #wand-own {
-  font-size: 30px;
+  font-size: 25px;
   color: white;
-  margin-left: 55px;
+  margin-left: 65px;
 }
 
 #wand-detail-img {
@@ -67,7 +67,7 @@
 }
 
 #broom-img {
-  max-height: 400px;
+  max-height: 300px;
   max-width: auto;
   margin-bottom: 20px;
   border-radius: 5px;
@@ -115,13 +115,13 @@
 }
 
 #book-li {
-  margin-left: 11%;
+  margin-left: 13%;
   margin-top: 0.5em;
   border-radius: 5px;
 }
 
 #broom-li {
-  margin-left: 11%;
+  margin-left: 13%;
   margin-top: 5px;
   border-radius: 5px;
 }
