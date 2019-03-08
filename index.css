@@ -19,26 +19,27 @@
   max-height: 300px;
   max-width: 230px;
   margin-bottom: 10px;
-  margin-left: 65px;
   border-radius: 5px;
 }
 
 #wand-btn {
   border-radius: 5px;
-  margin-left: 65px;
   padding: 5px 5px 5px 5px;
+  margin-bottom: 20px;
 }
 
 #wand-own-label {
   font-size: 30px;
   color: white;
-  margin-left: 50px;
 }
 
 #wand-own {
   font-size: 25px;
   color: white;
-  margin-left: 65px;
+}
+
+#wand-detail {
+  margin-left: 60px;
 }
 
 #wand-detail-img {
@@ -57,7 +58,6 @@
 }
 
 #wand-wood-core {
-  margin-left: 65px;
   color: white;
   font-family: 'Indie Flower', cursive;
 }
@@ -66,10 +66,14 @@
   margin-bottom: 20px;
 }
 
+#pet-list-group p {
+  color: white;
+}
+
 #broom-img {
   max-height: 300px;
   max-width: auto;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border-radius: 5px;
 }
 
@@ -80,7 +84,7 @@
 
 #book-detail-padding {
   padding: 10px 10px 10px 10px;
-  height: 27em;
+  height: 26.5em;
   width: 46em;
   text-align: center
 }
@@ -129,7 +133,7 @@
 #book-detail {
   background-color: rgb(171,	226,	245);
   position: absolute;
-  margin-top: 20px;
+  margin-top: 0.75em;
   border-radius: 5px;
 }
 

@@ -610,7 +610,7 @@ function createBroomDetail(broom) {
     <label>Maker: </label>
     <p>${broom.creator}</p>
     <label>Purpose: </label>
-    <p>${broom.utility}</p>
+    <p>${broom.utility}</p><br>
     <button data-id="${broom.id}" class="btn btn-info" id="add-broom">Buy Broom!</button>
     </div>
   `
@@ -674,12 +674,12 @@ function postUserWand(wandId) {
 
 function createWandCard(wand) {
   return `
-    <div class="card">
+    <div class="card" id="wand-card">
     <h3 id="wand-own-label">Formerly Owned By:</h3>
     <h5 id="wand-own">${wand.famous_owners}</h5>
   	<img src=${wand.image_url} class="wand-avatar"/><br>
     <p id="wand-wood-core">${wand.wood} + ${wand.core}</p>
-  	<button data-id=${wand.id} id="wand-btn" class='wand-card'> See More Details </button>
+  	<button data-id=${wand.id} id="wand-btn" class='wand-card'> See More Details </button><br>
   	</div>
   `
 // <li class="list-group-item" id="wand-li" data-id=${wand.id}>${wand.wood} + ${wand.core}</li>
