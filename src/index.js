@@ -483,11 +483,14 @@ function showDeletePage() {
 function getAllBooks() {
   fetch("http://localhost:3000/api/v1/books")
     .then(resp => resp.json())
-    .then(books => books.forEach(book => {
+    .then(books => {
       const bookList = document.getElementById('book-list-group')
+      bookList.innerHTML = ""
+      books.forEach(book => {
       bookList.addEventListener("click", handleDisplayBook)
       bookList.innerHTML += createBookLi(book)
-    }))
+    })
+  })
 }
 
 function getOneBook(bookId) {
@@ -555,11 +558,14 @@ function handleAddBook(event) {
 function getAllBrooms() {
   fetch("http://localhost:3000/api/v1/brooms")
     .then(resp => resp.json())
-    .then(brooms => brooms.forEach(broom => {
+    .then(brooms => {
       const broomList = document.getElementById('broom-list-group')
+      broomList.innerHTML = ""
+      brooms.forEach(broom => {
       broomList.addEventListener("click", handleDisplayBroom)
       broomList.innerHTML += createBroomLi(broom)
-    }))
+    })
+  })
 }
 
 function getOneBroom(broomId) {
@@ -632,11 +638,12 @@ const wandDetail = document.getElementById('wand-detail')
 function getAllWands() {
   fetch("http://localhost:3000/api/v1/wands")
     .then(resp => resp.json())
-    .then(wands => wands.forEach(wand => {
-      // const wandList = document.getElementById('wand-list-group')
-      // wandList.addEventListener("click", handleDisplayWand)
+    .then(wands => {
+      wandDetail.innerHTML = ""
+      wands.forEach(wand => {
       wandDetail.innerHTML += createWandCard(wand)
-    }))
+    })
+  })
 }
 
 function getOneWand(wandId) {
@@ -725,11 +732,14 @@ function handleAddWand(event) {
 function getAllPets() {
   fetch("http://localhost:3000/api/v1/pets")
     .then(resp => resp.json())
-    .then(pets => pets.forEach(pet => {
+    .then(pets => {
       const petList = document.getElementById('pet-list-group')
+      petList.innerHTML = ""
+      pets.forEach(pet => {
       petList.addEventListener("click", handleAddPet)
       petList.innerHTML += createPetCard(pet)
-    }))
+    })
+  })
 }
 
 // function getOnePet(petId) {
