@@ -247,7 +247,7 @@ function getHogwarts() {
 // Begin Users Fetches & Functions
 let currentUser = ""
 function getOneUser() {
-  fetch(`http://localhost:4000/api/v1/users/${currentUser.id}`)
+  fetch(`https://diagon-alley-backend.herokuapp.com/api/v1/users/${currentUser.id}`)
   .then(resp => resp.json())
   .then(user => {
     currentUser = user
@@ -277,7 +277,7 @@ function postNewUser(userData) {
 }
 
 function destroyUser() {
-  fetch(`http://localhost:4000/api/v1/users/${currentUser.id}`, {
+  fetch(`https://diagon-alley-backend.herokuapp.com/api/v1/users/${currentUser.id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -481,7 +481,7 @@ function showDeletePage() {
 
 // Book Fetches & Functions
 function getAllBooks() {
-  fetch("http://localhost:4000/api/v1/books")
+  fetch("https://diagon-alley-backend.herokuapp.com/api/v1/books")
     .then(resp => resp.json())
     .then(books => {
       const bookList = document.getElementById('book-list-group')
@@ -494,7 +494,7 @@ function getAllBooks() {
 }
 
 function getOneBook(bookId) {
-  fetch(`http://localhost:4000/api/v1/books/${bookId}`)
+  fetch(`https://diagon-alley-backend.herokuapp.com/api/v1/books/${bookId}`)
     .then(resp => resp.json())
     .then(book => {
       const bookDetail = document.getElementById('book-detail')
@@ -506,7 +506,7 @@ function getOneBook(bookId) {
 
 let currentBook = ""
 function postUserBook(bookId) {
-  fetch("http://localhost:4000/api/v1/user_books", {
+  fetch("https://diagon-alley-backend.herokuapp.com/api/v1/user_books", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -556,7 +556,7 @@ function handleAddBook(event) {
 
 // Broom Fetches & Functions
 function getAllBrooms() {
-  fetch("http://localhost:4000/api/v1/brooms")
+  fetch("https://diagon-alley-backend.herokuapp.com/api/v1/brooms")
     .then(resp => resp.json())
     .then(brooms => {
       const broomList = document.getElementById('broom-list-group')
@@ -569,7 +569,7 @@ function getAllBrooms() {
 }
 
 function getOneBroom(broomId) {
-  fetch(`http://localhost:4000/api/v1/brooms/${broomId}`)
+  fetch(`https://diagon-alley-backend.herokuapp.com/api/v1/brooms/${broomId}`)
     .then(resp => resp.json())
     .then(broom => {
       console.log(broom);
@@ -582,7 +582,7 @@ function getOneBroom(broomId) {
 
 let currentBroom = ""
 function postUserBroom(broomId) {
-  fetch("http://localhost:4000/api/v1/user_brooms", {
+  fetch("https://diagon-alley-backend.herokuapp.com/api/v1/user_brooms", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -636,7 +636,7 @@ function handleAddBroom(event) {
 const wandDetail = document.getElementById('wand-detail')
 
 function getAllWands() {
-  fetch("http://localhost:4000/api/v1/wands")
+  fetch("https://diagon-alley-backend.herokuapp.com/api/v1/wands")
     .then(resp => resp.json())
     .then(wands => {
       wandDetail.innerHTML = ""
@@ -647,7 +647,7 @@ function getAllWands() {
 }
 
 function getOneWand(wandId) {
-  fetch(`http://localhost:4000/api/v1/wands/${wandId}`)
+  fetch(`https://diagon-alley-backend.herokuapp.com/api/v1/wands/${wandId}`)
     .then(resp => resp.json())
     .then(wand => {
       wandDetail.innerHTML = ""
@@ -658,7 +658,7 @@ function getOneWand(wandId) {
 
 let currentWand = ""
 function postUserWand(wandId) {
-  fetch("http://localhost:4000/api/v1/user_wands", {
+  fetch("https://diagon-alley-backend.herokuapp.com/api/v1/user_wands", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -730,7 +730,7 @@ function handleAddWand(event) {
 
 // Pet Fetches & Functions
 function getAllPets() {
-  fetch("http://localhost:4000/api/v1/pets")
+  fetch("https://diagon-alley-backend.herokuapp.com/api/v1/pets")
     .then(resp => resp.json())
     .then(pets => {
       const petList = document.getElementById('pet-list-group')
@@ -755,7 +755,7 @@ function getAllPets() {
 
 let currentPet = ""
 function postUserPet(petId) {
-  fetch("http://localhost:4000/api/v1/user_pets", {
+  fetch("https://diagon-alley-backend.herokuapp.com/api/v1/user_pets", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
