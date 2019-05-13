@@ -787,7 +787,11 @@ function createPetCard(pet) {
 function handleAddPet(event) {
   if(event.target.tagName === 'BUTTON') {
     const petId = event.target.dataset.id
+<<<<<<< HEAD
+		event.target.innerText = 'Sold!'
+=======
     event.target.innerText = 'Bought!'
+>>>>>>> 28cc0e877656577f1fe7e9573686782d602111a0
     postUserPet(petId)
   }
 }
