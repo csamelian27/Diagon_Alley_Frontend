@@ -5,7 +5,7 @@ This adventure based app allows a user to make a profile, get sorted into a Hogw
 You must create/sign into an account to be able to use this website.
 
 ### Link to Backend
-https://github.com/csamelian27/harry_potter_backend
+https://github.com/csamelian27/Diagon_Alley_Backend
 
 ## Demo Video
 https://vimeo.com/332568343
